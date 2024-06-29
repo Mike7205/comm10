@@ -282,18 +282,18 @@ if checkbox_value2:
     st.plotly_chart(fig_D5E)
 
 with col11:
-    checkbox_value4 = st.checkbox('Own USD/PLN LSTM prediction model (D+1)',key = "<lstm2>")    
+    checkbox_value4 = st.checkbox('Own USD/EUR LSTM prediction model (D+1)',key = "<lstm2>")    
     
 if checkbox_value4:
-    st.subheader('USD/PLN exchange rate (D+1) predictions')
-    val = pd.read_excel('LSTM_mv.xlsx', sheet_name='D1_USD')
-    val_1 = val[['Date','USD/PLN','Day + 1 Prediction']].iloc[:-1]
+    st.subheader('EUR/PLN exchange rate (D+1) predictions')
+    val = pd.read_excel('LSTM_mv.xlsx', sheet_name='D1_EUR')
+    val_1 = val[['Date','EUR/PLN','Day + 1 Prediction']].iloc[:-1]
     day_s = val_1.shape[0]
 
     st.subheader(f'Predictions for the last {day_s} days')
 
-    fig_val = px.line(val_1, x='Date', y=['USD/PLN','Day + 1 Prediction'],color_discrete_map={
-                 'USD/PLN':'blue','Day + 1 Prediction':'red'}, width=1000, height=500 ) 
+    fig_val = px.line(val_1, x='Date', y=['EUR/PLN','Day + 1 Prediction'],color_discrete_map={
+                 'EUR/PLN':'blue','Day + 1 Prediction':'red'}, width=1000, height=500 ) 
 
     fig_val.update_layout(plot_bgcolor='white',showlegend=True,xaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'),
                       yaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'))
