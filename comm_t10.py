@@ -287,7 +287,7 @@ with col11:
 if checkbox_value4:
     st.subheader('EUR/PLN exchange rate (D+1) predictions')
     val = pd.read_excel('LSTM_mv.xlsx', sheet_name='D1_EUR')
-    val_1 = val[['Date','EUR/PLN','Day + 1 Prediction']].iloc[:-1]
+    val_1 = val[['Date','EUR/PLN','Day + 1 Prediction']][-50:]      #.iloc[:-1]
     day_s = val_1.shape[0]
 
     st.subheader(f'Predictions for the last {day_s} days')
