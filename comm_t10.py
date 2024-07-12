@@ -268,11 +268,14 @@ with col10:
     checkbox_value2 = st.checkbox('Own LSTM EUR/PLN D+5 prediction model',key = "<lstm1>")
 
 if checkbox_value2:
-    st.subheader('Own LSTM EUR/PLN D+5 prediction model (last 50 days)')
     val_D5E = pd.read_excel('LSTM_mv.xlsx', sheet_name='D5_EUR')
     val_D5EP = val_D5E[['Date','Day + 5 Prediction']][-50:]
     val_D5EU = pd.read_excel('LSTM_mv.xlsx', sheet_name='D5_EUR')
-    val_D5EUR = val_D5EU[['Date','EUR/PLN']][-50:]
+    val_D5EUR = val_D5EU[['Date','EUR/PLN']][-100:]
+    day_es = val_D5EUR.shape[0]
+
+    st.subheader(f'Predictions for the last {day_es} days')
+  
     fig_D5E = px.line(val_D5EP, x='Date', y=['Day + 5 Prediction'],color_discrete_map={'Day + 5 Prediction':'red'}, width=1000, height=500)
     fig_D5E.add_trace(go.Scatter(x=val_D5EUR['Date'], y=val_D5EUR['EUR/PLN'], mode='lines', name='EUR/PLN', line=dict(color='blue')))
 
@@ -287,7 +290,7 @@ with col11:
 if checkbox_value4:
     st.subheader('EUR/PLN exchange rate (D+1) predictions')
     val = pd.read_excel('LSTM_mv.xlsx', sheet_name='D1_EUR')
-    val_1 = val[['Date','EUR/PLN','Day + 1 Prediction']][-50:]      #.iloc[:-1]
+    val_1 = val[['Date','EUR/PLN','Day + 1 Prediction']][-100:]      #.iloc[:-1]
     day_s = val_1.shape[0]
 
     st.subheader(f'Predictions for the last {day_s} days')
