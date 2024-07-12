@@ -272,7 +272,7 @@ if checkbox_value2:
     val_D5EP = val_D5E[['Date','Day + 5 Prediction']][-100:]
     val_D5EU = pd.read_excel('LSTM_mv.xlsx', sheet_name='D5_EUR')
     val_D5EUR = val_D5EU[['Date','EUR/PLN']][-100:]
-    day_es = val_D5P.shape[0]
+    day_es = val_D5EUR.shape[0]
 
     st.subheader(f'Predictions for the last {day_es} days')
   
