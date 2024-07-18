@@ -254,7 +254,7 @@ def vol_chart(comm):
      
 vol_chart(comm)
                                
-col9, col10, col11 = st.columns(3)
+col9, col10, col11, col12 = st.columns(4)
 with col9:
     checkbox_value3 = st.checkbox('Arima model trend prediction for x days',key = "<arima_m>")
 
@@ -284,7 +284,7 @@ if checkbox_value2:
     st.plotly_chart(fig_D5E)
 
 with col11:
-    checkbox_value4 = st.checkbox('Own USD/EUR LSTM prediction model (D+1)',key = "<lstm2>")    
+    checkbox_value4 = st.checkbox('Own EUR/PLN LSTM prediction model (D+1)',key = "<lstm2>")    
     
 if checkbox_value4:
     st.subheader('EUR/PLN exchange rate (D+1) predictions')
@@ -302,3 +302,21 @@ if checkbox_value4:
    
     st.plotly_chart(fig_val, use_container_width=True)
     
+with col12:
+    checkbox_value5 = st.checkbox('Own USD/PLN LSTM prediction model (D+1)',key = "<lstm3>")    
+    
+if checkbox_value5:
+    st.subheader('USD/PLN exchange rate (D+1) predictions')
+    val_s = pd.read_excel('LSTM_mv.xlsx', sheet_name='D1_USD')
+    val_s1 = val_s[['Date','USD/PLN','Day + 1 Prediction']][-100:]      #.iloc[:-1]
+    day_s1 = val_s1.shape[0]
+
+    st.subheader(f'Predictions for the last {day_s1} days')
+
+    fig_vals = px.line(val_s1, x='Date', y=['USD/PLN','Day + 1 Prediction'],color_discrete_map={
+                 'USD/PLN':'blue','Day + 1 Prediction':'orange'}, width=1000, height=500 ) 
+
+    fig_vals.update_layout(plot_bgcolor='white',showlegend=True,xaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'),
+                      yaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'))
+   
+    st.plotly_chart(fig_vals, use_container_width=True)
