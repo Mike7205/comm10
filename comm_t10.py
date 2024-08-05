@@ -34,7 +34,7 @@ comm_dict = {'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY','CL=F':'Crude_Oil',
              '^DJI':'DJI30','GC=F':'Gold','^IXIC':'NASDAQ',
              '^GSPC':'SP_500','^TNX':'10_YB',
              'HG=F':'Copper','GBPUSD=X':'USD_GBP',
-             'JPY=X':'USD_JPY','EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD'
+             'JPY=X':'USD_JPY','EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD','CHF=X':'USD/CHF' 
              ,'^FVX':'5_YB','RUB=X':'USD/RUB','PL=F':'Platinum',
              'SI=F':'Silver','NG=F':'Natural Gas','ZR=F':'Rice Futures',
              'ZS=F':'Soy Futures','KE=F':'KC HRW Wheat Futures'}
