@@ -74,15 +74,15 @@ def comm_data(comm):
 st.html(
     """
 <style>
-[data-testid="stSidebarContent"] {color: black; background-color: #000080}     
-</style>
-"""
-)
+[data-testid="stSidebarContent"] {color: white; background-color: #000080}     
 st.sidebar.title('Commodities, Indexies, Currencies & Bonds')
 comm = st.sidebar.selectbox('What do you want to analyse today ?', list(comm_dict.values()))
 comm_f(comm)
 st.sidebar.write('You selected:', comm)
 st.sidebar.dataframe(comm_data(comm))
+</style>
+"""
+)
 
 # tu wstawimy wykresy 15 minutowe
 def t1_f(char1):
