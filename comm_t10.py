@@ -71,13 +71,13 @@ def comm_data(comm):
     
     return Tab_his1
 
-st.markdown("""
-    <style>
-    .sidebar .sidebar-content {
-        background-color: #0000FF;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+st.html(
+    """
+<style>
+[data-testid="stSidebarContent"] {color: blue}      #; background-color: red;
+</style>
+"""
+)
 st.sidebar.title('Commodities, Indexies, Currencies & Bonds')
 comm = st.sidebar.selectbox('What do you want to analyse today ?', list(comm_dict.values()))
 comm_f(comm)
