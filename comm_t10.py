@@ -322,7 +322,7 @@ if checkbox_value5:
     st.subheader(f'Predictions for the last {day_s1} days')
 
     fig_vals = px.line(val_s1, x='Date', y=['USD/PLN','Day + 1 Prediction'],color_discrete_map={
-                 'USD/PLN':'#89CFF0','Day + 1 Prediction':'green'}, width=1000, height=500 ) 
+                 'USD/PLN':'yellow','Day + 1 Prediction':'green'}, width=1000, height=500 ) # #89CFF0
 
     fig_vals.update_layout(plot_bgcolor='white',showlegend=True,xaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'),
                       yaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'))
