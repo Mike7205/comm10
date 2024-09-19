@@ -185,9 +185,11 @@ def run_D1_models():
     for m in data_models:
         if m is eur_df:
             LSTM_Model(m)
+            logging.info("Saving forecast to D1_EUR_a.pkl")
             _fore_cast('D1_EUR_a.pkl')
         elif m is usd_df:
             LSTM_Model(m)
+            logging.info("Saving forecast to D1_USD_a.pkl")
             _fore_cast('D1_USD_a.pkl')
             
 run_D1_models()
