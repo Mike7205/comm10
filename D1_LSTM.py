@@ -59,7 +59,7 @@ def data_set():
                 'Rice Futures', 'Soy Futures', 'KC HRW Wheat Futures']]
     n_rr_eur.fillna(0)
         
-    usd_df = pd.read_excel('Nm_data.xlsx')
+    usd_df = pd.read_pickle('Nm_data.pkl')
     final_PLN_USD = usd_df['PLN/USD']
     f_df1 = usd_df[['DJI30', 'USD_EUR', 'USD/CNY', 'Crude_Oil', 'Gold', 'NASDAQ', 'SP_500', 'EUR/PLN','USD/AED',
            '10_YB', 'Copper', 'USD_GBP', 'USD_JPY', '5_YB', 'USD/RUB', 'Platinum', 'Silver', 'Natural Gas',
