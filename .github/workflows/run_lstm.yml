@@ -2,7 +2,7 @@ name: Run D1_LSTM.py daily
 
 on:
   schedule:
-    - cron: '0 7 * * *'  # Codziennie o 7:00 UTC (9:00 czasu warszawskiego)
+    - cron: '0 7 * * 1-5'  # Od poniedziałku do piątku o 7:00 UTC (9:00 czasu warszawskiego)
 
 jobs:
   run-lstm:
