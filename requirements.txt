@@ -6,4 +6,4 @@ numpy>=1.22.0
 pandas
 scipy
 scikit-learn
-statsmodels==0.13.5
+statsmodels
