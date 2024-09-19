@@ -2,7 +2,7 @@ streamlit
 plotly
 yfinance==0.2.28
 openpyxl
-numpy
+numpy==1.21.5
 pandas
 scipy
 scikit-learn
