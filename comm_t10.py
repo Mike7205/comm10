@@ -296,7 +296,7 @@ with col11:
     
 if checkbox_value4:
     st.subheader('EUR/PLN exchange rate (D+1) predictions')
-    val = pd.read_excel('LSTM_mv.xlsx', sheet_name='D1_EUR')
+    val = pd.read_pickle('D1_EUR_a.pkl')
     val_1 = val[['Date','EUR/PLN','Day + 1 Prediction']][-100:]      #.iloc[:-1]
     day_s = val_1.shape[0]
 
@@ -315,7 +315,7 @@ with col12:
     
 if checkbox_value5:
     st.subheader('USD/PLN exchange rate (D+1) predictions')
-    val_s = pd.read_excel('LSTM_mv.xlsx', sheet_name='D1_USD')
+    val_s = pd.read_pickle('D1_USD_a.pkl')
     val_s1 = val_s[['Date','USD/PLN','Day + 1 Prediction']][-100:]      #.iloc[:-1]
     day_s1 = val_s1.shape[0]
 
