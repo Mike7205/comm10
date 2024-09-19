@@ -11,6 +11,9 @@ from sklearn import metrics
 from sklearn.preprocessing import MinMaxScaler
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, LSTM
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 today = date.today()
 comm_dict2 = {'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY','CL=F':'Crude_Oil','GC=F':'Gold','^IXIC':'NASDAQ',
