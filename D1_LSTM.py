@@ -74,6 +74,39 @@ def data_set():
     n_rr_usd.fillna(0)
     return n_rr_eur, n_rr_usd
 
+def data_set_eur():
+    eur_df = pd.read_pickle('Nm_data.pkl')
+    final_PLN_EUR = eur_df['EUR/PLN']
+    f_df = eur_df[['DJI30', 'USD_EUR', 'USD/CNY', 'Crude_Oil', 'Gold', 'NASDAQ', 'SP_500',
+               '10_YB', 'Copper', 'USD_GBP', 'USD_JPY', 'PLN/USD', '5_YB','USD/AED',
+               'USD/RUB', 'Platinum', 'Silver', 'Natural Gas', 'Rice Futures',
+               'Soy Futures', 'KC HRW Wheat Futures']]
+    rr_d = (f_df - f_df.shift(1)) / f_df.shift(1)  # ta linijka kodu liczy wszystkie stopy zwrotu
+    rr_df = pd.concat([final_PLN_EUR, rr_d], axis=1)
+    new_rr = rr_df.dropna()
+
+    n_rr_eur = new_rr[['EUR/PLN', 'DJI30', 'USD_EUR', 'USD/CNY', 'Crude_Oil',
+                    'Gold', 'NASDAQ', 'SP_500', '10_YB', 'Copper', 'USD_GBP', 'USD_JPY','USD/AED',
+                    'PLN/USD', '5_YB', 'USD/RUB', 'Platinum', 'Silver', 'Natural Gas',
+                    'Rice Futures', 'Soy Futures', 'KC HRW Wheat Futures']]
+    n_rr_eur.fillna(0)
+    n_rr_eur.to_pickle('n_rr_eur.pkl')  
+
+def data_set_usd():
+    usd_df = pd.read_pickle('Nm_data.pkl')
+    final_PLN_USD = usd_df['PLN/USD']
+    f_df1 = usd_df[['DJI30', 'USD_EUR', 'USD/CNY', 'Crude_Oil', 'Gold', 'NASDAQ', 'SP_500', 'EUR/PLN','USD/AED',
+               '10_YB', 'Copper', 'USD_GBP', 'USD_JPY', '5_YB', 'USD/RUB', 'Platinum', 'Silver', 'Natural Gas',
+                'Rice Futures','Soy Futures', 'KC HRW Wheat Futures']]
+    rr_d1 = (f_df1 - f_df1.shift(1)) / f_df1.shift(1)  # ta linijka kodu liczy wszystkie stopy zwrotu
+    rr_df1 = pd.concat([final_PLN_USD, rr_d1], axis=1)
+    new_rr_usd = rr_df1.dropna()  
+
+    n_rr_usd = new_rr_usd[['PLN/USD','EUR/PLN','DJI30', 'USD_EUR', 'USD/CNY','Crude_Oil', 'Gold',
+                                'NASDAQ', 'SP_500','10_YB', 'Copper', 'USD_GBP','USD_JPY','5_YB', 'USD/RUB','Platinum', 'USD/AED', 
+                                'Silver', 'Natural Gas','Rice Futures','Soy Futures','KC HRW Wheat Futures']]
+    n_rr_usd.fillna(0)
+    n_rr_usd.to_pickle('n_rr_usd.pkl')
 
 def LSTM_Model(data_set):
     set_1 = data_set.fillna(0)
@@ -143,14 +176,17 @@ def _fore_cast(plik):
     
 def run_D1_models():
     model_f(3001)
+    data_set_eur()
+    data_set_usd()
     day_close()
-    n_rr_eur, n_rr_usd = data_set()
-    data_models = [n_rr_eur, n_rr_usd]
+    eur_df = pd.read_pickle('n_rr_eur.pkl')
+    usd_df = pd.read_pickle('n_rr_usd.pkl')
+    data_models = [eur_df, usd_df]
     for m in data_models:
-        if m is n_rr_eur:
+        if m is eur_df:
             LSTM_Model(m)
             _fore_cast('D1_EUR_a.pkl')
-        elif m is n_rr_usd:
+        elif m is usd_df:
             LSTM_Model(m)
             _fore_cast('D1_USD_a.pkl')
             
