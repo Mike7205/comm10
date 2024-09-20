@@ -176,23 +176,27 @@ def _fore_cast(plik):
     index_nan = input_plik['Day + 1 Prediction'].isna().idxmax()
     input_plik.at[index_nan, 'Day + 1 Prediction'] = _fore_value
     input_plik.to_pickle(plik)   
-    
+               
 def run_D1_models():
+    logging.info("Starting model functions")
     model_f(3001)
     data_set_eur()
     data_set_usd()
     day_close()
+    logging.info("Loading dataframes")
     eur_df = pd.read_pickle('n_rr_eur.pkl')
     usd_df = pd.read_pickle('n_rr_usd.pkl')
     data_models = [eur_df, usd_df]
     for m in data_models:
-        if m is eur_df:
+        if m.equals(eur_df):
+            logging.info("Processing EUR dataframe")
             LSTM_Model(m)
             logging.info("Saving forecast to D1_EUR_a.pkl")
             _fore_cast('D1_EUR_a.pkl')
-        elif m is usd_df:
+        elif m.equals(usd_df):
+            logging.info("Processing USD dataframe")
             LSTM_Model(m)
             logging.info("Saving forecast to D1_USD_a.pkl")
-            _fore_cast('D1_USD_a.pkl')
+            _fore_cast('D1_USD_a.pkl')            
             
 run_D1_models()
