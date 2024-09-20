@@ -32,15 +32,7 @@ jobs:
 
     - name: Save results
       run: |
-        mkdir -p artifacts
-        cp D1_EUR_a.pkl artifacts/
-        cp D1_USD_a.pkl artifacts/
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: results
-        path: artifacts/
+        cp D1_EUR_a.pkl D1_USD_a.pkl artifacts .
 
     - name: Commit and push results
       run: |
