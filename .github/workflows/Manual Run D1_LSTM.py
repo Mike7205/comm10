@@ -23,3 +23,11 @@ jobs:
 
     - name: Run D1_LSTM.py
       run: python D1_LSTM.py
+
+    - name: List files after saving
+      run: ls -la
+
+    - name: Check if files exist
+      run: |
+        if [ -f D1_EUR_a.pkl ]; then echo "D1_EUR_a.pkl exists"; else echo "D1_EUR_a.pkl does not exist"; fi
+        if [ -f D1_USD_a.pkl ]; then echo "D1_USD_a.pkl exists"; else echo "D1_USD_a.pkl does not exist"; fi
