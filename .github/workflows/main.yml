@@ -27,18 +27,25 @@ jobs:
         pip install -r requirements.txt  # Zakładając, że masz plik requirements.txt
         pip install git+https://github.com/statsmodels/statsmodels.git
 
-    - name: Run D1_LSTM.py
+    - name: Run D1_LSTM.p
       run: python D1_LSTM.py
 
     - name: Save results
       run: |
-        cp D1_EUR_a.pkl D1_USD_a.pkl artifacts .
+        mkdir -p artifacts
+        cp D1_EUR_a.pkl artifacts/
+        cp D1_USD_a.pkl artifacts/
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: results
+        path: artifacts/
 
     - name: Commit and push results
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
-        git add D1_EUR_a.pkl D1_USD_a.pkl
+        git add artifacts/D1_EUR_a.pkl artifacts/D1_USD_a.pkl
         git commit -m 'Add results from D1_LSTM.py'
         git push
-      
