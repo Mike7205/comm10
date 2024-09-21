@@ -42,6 +42,11 @@ jobs:
         name: results
         path: artifacts/
 
+    - name: Pull latest changes
+      run: git pull origin master
+      env:
+        GITHUB_TOKEN: ${{ secrets.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 }}
+
     - name: Commit and push results
       run: |
         git config --global user.name 'github-actions'
