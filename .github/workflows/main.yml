@@ -50,4 +50,4 @@ jobs:
         git commit -m 'Add results from D1_LSTM.py'
         git push
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.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 }}
