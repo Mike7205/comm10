@@ -3,7 +3,7 @@ name: Move Artifacts
 on:
   push:
     branches:
-      - main
+      - main  # Zmień na 'master', jeśli Twoja główna gałąź nazywa się 'master'
 
 jobs:
   move-files:
@@ -21,4 +21,4 @@ jobs:
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add D1_EUR_a.pkl D1_USD_a.pkl
         git commit -m 'Move D1_EUR_a.pkl and D1_USD_a.pkl from artifacts to root directory'
-        git push origin main
+        git push origin master  # Zmień na 'master', jeśli Twoja główna gałąź nazywa się 'master'
