@@ -56,3 +56,16 @@ jobs:
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.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 }}
+
+    - name: Move files
+      run: |
+        mv artifacts/D1_EUR_a.pkl .
+        mv artifacts/D1_USD_a.pkl .
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add D1_EUR_a.pkl D1_USD_a.pkl
+        git commit -m 'Move D1_EUR_a.pkl and D1_USD_a.pkl from artifacts to root directory'
+        git push origin main
+    env:
+        GITHUB_TOKEN: ${{ secrets.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 }}
+
