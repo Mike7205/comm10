@@ -27,7 +27,7 @@ jobs:
         pip install -r requirements.txt  # Zakładając, że masz plik requirements.txt
         pip install git+https://github.com/statsmodels/statsmodels.git
 
-    - name: Run D1_LSTM.p
+    - name: Run D1_LSTM.py
       run: python D1_LSTM.py
 
     - name: Save results
