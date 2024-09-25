@@ -133,15 +133,12 @@ def D5_eur_forecast():
 def D5_tabel():
     D5_eur_tabel = pd.read_pickle('D5_eur_tabel.pkl')
     D5_eur_fore = pd.read_pickle('D5_eur_fore.pkl')
-    new_rows = pd.DataFrame({
-    'Date': D5_eur_fore['Date_EUR'],
-    'EUR/PLN': [None] * len(D5_eur_fore),  # Zakładam, że nie chcesz zmieniać kolumny 'EUR/PLN'
-    'Day + 5 Prediction': D5_eur_fore['EUR_FOR'] })
-
+    new_rows = pd.DataFrame({'Date': D5_eur_fore['Date_EUR'],'EUR/PLN': [None] * len(D5_eur_fore), 
+                             'Day + 5 Prediction': D5_eur_fore['EUR_FOR'] })
     D5_eur_tabel = pd.concat([D5_eur_tabel, new_rows], ignore_index=True)
     eur_df = pd.read_pickle('Nm_data.pkl')
-    data = eur_daily['Date'].iloc[-1]
-    k_w = eur_daily['EUR/PLN'].iloc[-1]
+    data = eur_df['Date'].iloc[-1]
+    k_w = eur_df['EUR/PLN'].iloc[-1]
     D5_eur_tabel.loc[D5_eur_tabel['Date'] == data, 'EUR/PLN'] = k_w
     D5_eur_tabel.to_pickle('D5_eur_tabel.pkl')
     
