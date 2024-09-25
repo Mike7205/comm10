@@ -11,11 +11,6 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from pathlib import Path
 import appdirs as ad
-CACHE_DIR = ".cache"
-# Force appdirs to say that the cache dir is .cache
-ad.user_cache_dir = lambda *args: CACHE_DIR
-# Create the cache dir if it doesn't exist
-Path(CACHE_DIR).mkdir(exist_ok=True)
 import yfinance as yf
 from sklearn.linear_model import LinearRegression
 from streamlit import set_page_config
@@ -23,7 +18,7 @@ from statsmodels.tsa.holtwinters import ExponentialSmoothing
 from statsmodels.tsa.arima.model import ARIMA
 
 # Set page configuration for full width
-set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 
 # start definicji strony
 st.title('The main global economy indicators and')
