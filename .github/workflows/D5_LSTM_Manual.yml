@@ -33,7 +33,7 @@ jobs:
     - name: Save results
       run: |
         mkdir -p artifacts
-        cp _fore_D5.pkl artifacts/
+        cp D5_eur_fore.pkl artifacts/
         
     - name: Upload artifact
       uses: actions/upload-artifact@v3
@@ -50,7 +50,7 @@ jobs:
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
-        git add artifacts/_fore_D5.pkl 
+        git add artifacts/D5_eur_fore.pkl 
         git commit -m 'Add results from D5_LSTM.py'
         git push
       env:
@@ -62,8 +62,8 @@ jobs:
         mv artifacts/D1_USD_a.pkl .
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add _fore_D5.pkl 
-        git commit -m 'Move _fore_D5.pkl from artifacts to root directory'
+        git add D5_eur_fore.pkl 
+        git commit -m 'Move D5_eur_fore.pkl from artifacts to root directory'
         git push origin master  
       env:
         GITHUB_TOKEN: ${{ secrets.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 }}
