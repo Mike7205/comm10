@@ -22,7 +22,7 @@ st.set_page_config(layout="wide")
 
 # start definicji strony
 st.title('Selected global economy indicators & own LSTM prediction models ')
-st.write('© Michał Leśniewski')
+st.write('© Michał Leśniewski \n')
 
 # Definicje
 today = date.today()
