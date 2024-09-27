@@ -103,7 +103,7 @@ def t2_f(char2):
 col1, col2 = st.columns([0.5, 0.5])
 with col1:
     box = list(comm_dict.values())
-    char1 = st.selectbox('Daily trading dynamics', box, index= box.index('Crude_Oil'),key = "<char1>")
+    char1 = st.selectbox('Daily trading dynamics', box, index= box.index('Brent_Oil'),key = "<char1>")
     t1_f(char1)
     data_x1 = tf_c1.index
     fig_char1 = px.line(tf_c1, x=data_x1, y=['Open','High','Low','Close'],color_discrete_map={
