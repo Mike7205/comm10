@@ -31,7 +31,8 @@ comm_dict = {'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY','CL=F':'Crude_Oil','GC=F':'G
               'EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD', 'AED=X':'USD/AED','^FVX':'5_YB','RUB=X':'USD/RUB',
               'PL=F':'Platinum','SI=F':'Silver','NG=F':'Natural Gas',
               'ZR=F':'Rice Futures','ZS=F':'Soy Futures','KE=F':'KC HRW Wheat Futures','^RUT':'Russell 2000','^VIX':'CBOE Volatility Index',
-             '^BVSP':'IBOVESPA','DX-Y.NYB':'US Dollar Index','^FTSE':'FTSE 100','^GDAXI':'DAX PERFORMANCE-INDEX', '^N100':'Euronext 100 Index'}
+             '^BVSP':'IBOVESPA','DX-Y.NYB':'US Dollar Index','^FTSE':'FTSE 100','^GDAXI':'DAX PERFORMANCE-INDEX', '^N100':'Euronext 100 Index','^XDE':'Euro Currency Index', 
+               '^XDN':'Japanese Yen Currency Index','^XDA':'Australian Dollar Currency Index','^XDB':'British Pound Currency Index'}
 
 # Pobieranie danych
 def comm_f(comm):
