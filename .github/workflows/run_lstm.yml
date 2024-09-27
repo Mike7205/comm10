@@ -36,6 +36,7 @@ jobs:
         mkdir -p artifacts
         cp D1_EUR_a.pkl artifacts/
         cp D1_USD_a.pkl artifacts/
+        cp D5_eur_tabel.pkl artifacts/
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
@@ -52,7 +53,7 @@ jobs:
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
-        git add artifacts/D1_EUR_a.pkl artifacts/D1_USD_a.pkl
+        git add artifacts/D1_EUR_a.pkl artifacts/D1_USD_a.pkl artifacts/D5_eur_tabel.pkl
         git commit -m 'Add results from D1_LSTM.py'
         git push
       env:
@@ -62,10 +63,11 @@ jobs:
       run: |
         mv artifacts/D1_EUR_a.pkl .
         mv artifacts/D1_USD_a.pkl .
+        mv artifacts/D5_eur_tabel.pkl .
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add D1_EUR_a.pkl D1_USD_a.pkl
-        git commit -m 'Move D1_EUR_a.pkl and D1_USD_a.pkl from artifacts to root directory'
+        git add D1_EUR_a.pkl D1_USD_a.pkl D5_eur_tabel.pkl
+        git commit -m 'Move D1_EUR_a.pkl and D1_USD_a.pkl and D5_eur_tabel.pkl from artifacts to root directory'
         git push origin master  
     env:
         GITHUB_TOKEN: ${{ secrets.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 }}   
