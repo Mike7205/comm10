@@ -26,13 +26,13 @@ st.write('© Michał Leśniewski \n \n')
 
 # Definicje
 today = date.today()
-comm_dict = {'^GSPC':'SP_500','EURUSD=X':'USD_EUR','CNY=X':'USD/CNY','CL=F':'Crude_Oil','GC=F':'Gold','^IXIC':'NASDAQ',
-             '^TNX':'10_YB','HG=F':'Copper','GBPUSD=X':'USD_GBP','JPY=X':'USD_JPY',
-              'EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD', 'AED=X':'USD/AED','^FVX':'5_YB','RUB=X':'USD/RUB',
-              'PL=F':'Platinum','SI=F':'Silver','NG=F':'Natural Gas',
-              'ZR=F':'Rice Futures','ZS=F':'Soy Futures','KE=F':'KC HRW Wheat Futures','^RUT':'Russell 2000','^VIX':'CBOE Volatility Index',
-             '^BVSP':'IBOVESPA','DX-Y.NYB':'US Dollar Index','^FTSE':'FTSE 100','^GDAXI':'DAX PERFORMANCE-INDEX', '^N100':'Euronext 100 Index','^XDE':'Euro Currency Index', 
-               '^XDN':'Japanese Yen Currency Index','^XDA':'Australian Dollar Currency Index','^XDB':'British Pound Currency Index'}
+comm_dict = {'^GSPC':'SP_500','^DJI':'Dow Jones','^IXIC':'NASDAQ','^VIX':'CBOE Volatility Index','^RUT':'Russell 2000',
+             '^BVSP':'IBOVESPA','^FTSE':'FTSE 100','^GDAXI':'DAX PERFORMANCE-INDEX', '^N100':'Euronext 100 Index',
+             'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY', 'GBPUSD=X':'USD_GBP','JPY=X':'USD_JPY','EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD',  
+             'RUB=X':'USD/RUB','DX-Y.NYB':'US Dollar Index','^XDE':'Euro Currency Index', '^XDN':'Japanese Yen Currency Index',
+             '^XDA':'Australian Dollar Currency Index','^XDB':'British Pound Currency Index','^TNX':'10_YB', '^FVX':'5_YB', 
+             'CL=F':'Crude_Oil','BZ=F':'Brent Oil ', 'GC=F':'Gold','HG=F':'Copper', 'PL=F':'Platinum','SI=F':'Silver','NG=F':'Natural Gas',
+              'ZR=F':'Rice Futures','ZS=F':'Soy Futures'}
 
 # Pobieranie danych
 def comm_f(comm):
@@ -77,7 +77,6 @@ st.sidebar.title('Commodities, Indexies, Currencies & Bonds')
 comm = st.sidebar.radio('What do you want to analyse today ?', list(comm_dict.values()))
 comm_f(comm)
 st.sidebar.write('Main Metrics:', comm)
-#st.sidebar.dataframe(comm_data(comm))
 side_tab = pd.DataFrame(comm_data(comm))
 st.sidebar.data_editor(side_tab)
 
