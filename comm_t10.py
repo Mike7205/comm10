@@ -22,18 +22,7 @@ st.set_page_config(layout="wide")
 
 # start definicji strony
 st.title('Selected global economy indicators & own LSTM prediction models')
-st.write('© Michał Leśniewski \n \n')
-
-st.markdown(
-    """
-    <style>
-    .stApp {
-        background-color: #578CB5; /* jasno szafirowy */
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+st.write('© Michał Leśniewski \n')
 
 # Definicje
 today = date.today()
