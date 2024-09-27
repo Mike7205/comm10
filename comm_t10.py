@@ -26,15 +26,12 @@ st.title('some of my own LSTM prediction models')
 
 # Definicje
 today = date.today()
-comm_dict = {'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY','CL=F':'Crude_Oil',
-             '^DJI':'DJI30','GC=F':'Gold','^IXIC':'NASDAQ',
-             '^GSPC':'SP_500','^TNX':'10_YB',
-             'HG=F':'Copper','GBPUSD=X':'USD_GBP',
-             'JPY=X':'USD_JPY','EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD',
-             'CHF=X':'USD/CHF','EURCHF=X':'EUR/CHF'
-             ,'^FVX':'5_YB','RUB=X':'USD/RUB','PL=F':'Platinum',
-             'SI=F':'Silver','NG=F':'Natural Gas','ZR=F':'Rice Futures',
-             'ZS=F':'Soy Futures','KE=F':'KC HRW Wheat Futures'}
+comm_dict = {'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY','CL=F':'Crude_Oil','GC=F':'Gold','^IXIC':'NASDAQ',
+             '^GSPC':'SP_500','^TNX':'10_YB','HG=F':'Copper','GBPUSD=X':'USD_GBP','JPY=X':'USD_JPY',
+              'EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD', 'AED=X':'USD/AED','^FVX':'5_YB','RUB=X':'USD/RUB',
+              'PL=F':'Platinum','SI=F':'Silver','NG=F':'Natural Gas',
+              'ZR=F':'Rice Futures','ZS=F':'Soy Futures','KE=F':'KC HRW Wheat Futures','^RUT':'Russell 2000','^VIX':'CBOE Volatility Index',
+             '^BVSP':'IBOVESPA','DX-Y.NYB':'US Dollar Index','^FTSE':'FTSE 100','^GDAXI':'DAX PERFORMANCE-INDEX', '^N100':'Euronext 100 Index'}
 
 # Pobieranie danych
 def comm_f(comm):
