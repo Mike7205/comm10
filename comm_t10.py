@@ -21,7 +21,7 @@ from statsmodels.tsa.arima.model import ARIMA
 st.set_page_config(layout="wide")
 
 # start definicji strony
-st.title('Selected global economy indicators & own LSTM prediction models',, divider="blue")
+st.title('Selected global economy indicators & own LSTM prediction models',divider="blue")
 st.write('© Michał Leśniewski \n \n')
 
 # Definicje
