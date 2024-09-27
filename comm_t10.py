@@ -100,7 +100,7 @@ def t2_f(char2):
     return tf_c2 
 
 
-col1, col2 = st.columns([0.47, 0.53])
+col1, col2 = st.columns([0.5, 0.5])
 with col1:
     box = list(comm_dict.values())
     char1 = st.selectbox('Daily trading dynamics', box, index= box.index('Crude_Oil'),key = "<char1>")
