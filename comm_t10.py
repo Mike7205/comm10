@@ -24,6 +24,17 @@ st.set_page_config(layout="wide")
 st.title('Selected global economy indicators & own LSTM prediction models')
 st.write('© Michał Leśniewski \n \n')
 
+st.markdown(
+    """
+    <style>
+    .stApp {
+        background-color: #87CEEB; /* jasno szafirowy */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Definicje
 today = date.today()
 comm_dict = {'^GSPC':'SP_500','^DJI':'Dow Jones','^IXIC':'NASDAQ','^VIX':'CBOE Volatility Index','^RUT':'Russell 2000',
