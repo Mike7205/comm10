@@ -68,9 +68,9 @@ def comm_data(comm):
 st.html(
     """
 <style>
-[data-testid="stSidebarContent"] {color: black; background-color: #91BFCF} #90EE90 #ADD8E6 #9CC2CF
+[data-testid="stSidebarContent"] {color: black; background-color: #03B303} #90EE90 #ADD8E6 #9CC2CF
 </style>
-""")
+""") #91BFCF
 
 st.sidebar.title('Commodities, Indexies, Currencies & Bonds')
 comm = st.sidebar.selectbox('What do you want to analyse today ?', list(comm_dict.values()))
