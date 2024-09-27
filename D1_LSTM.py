@@ -16,7 +16,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 today = date.today()
-comm_dict2 = {'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY','CL=F':'Crude_Oil','GC=F':'Gold','^IXIC':'NASDAQ',
+comm_dict2 = {'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY','BZ=F':'Brent_Oil','GC=F':'Gold','^IXIC':'NASDAQ',
              '^GSPC':'SP_500','^TNX':'10_YB','HG=F':'Copper','GBPUSD=X':'USD_GBP','JPY=X':'USD_JPY',
               'EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD', 'AED=X':'USD/AED','^FVX':'5_YB','RUB=X':'USD/RUB',
               'PL=F':'Platinum','SI=F':'Silver','NG=F':'Natural Gas',
@@ -48,7 +48,7 @@ def model_f(past):
 def data_set_eur():
     eur_df = pd.read_pickle('Nm_data.pkl')
     final_PLN_EUR = eur_df['EUR/PLN']
-    f_df = eur_df[['DJI30', 'USD_EUR', 'USD/CNY', 'Crude_Oil', 'Gold', 'NASDAQ', 'SP_500',
+    f_df = eur_df[['DJI30', 'USD_EUR', 'USD/CNY', 'Brent_Oil', 'Gold', 'NASDAQ', 'SP_500',
                '10_YB', 'Copper', 'USD_GBP', 'USD_JPY', 'PLN/USD', '5_YB','USD/AED',
                'USD/RUB', 'Platinum', 'Silver', 'Natural Gas', 'Rice Futures',
                'Soy Futures', 'KC HRW Wheat Futures']]
@@ -56,7 +56,7 @@ def data_set_eur():
     rr_df = pd.concat([final_PLN_EUR, rr_d], axis=1)
     new_rr = rr_df.dropna()
 
-    n_rr_eur = new_rr[['EUR/PLN', 'DJI30', 'USD_EUR', 'USD/CNY', 'Crude_Oil',
+    n_rr_eur = new_rr[['EUR/PLN', 'DJI30', 'USD_EUR', 'USD/CNY', 'Brent_Oil',
                     'Gold', 'NASDAQ', 'SP_500', '10_YB', 'Copper', 'USD_GBP', 'USD_JPY','USD/AED',
                     'PLN/USD', '5_YB', 'USD/RUB', 'Platinum', 'Silver', 'Natural Gas',
                     'Rice Futures', 'Soy Futures', 'KC HRW Wheat Futures']]
@@ -66,14 +66,14 @@ def data_set_eur():
 def data_set_usd():
     usd_df = pd.read_pickle('Nm_data.pkl')
     final_PLN_USD = usd_df['PLN/USD']
-    f_df1 = usd_df[['DJI30', 'USD_EUR', 'USD/CNY', 'Crude_Oil', 'Gold', 'NASDAQ', 'SP_500', 'EUR/PLN','USD/AED',
+    f_df1 = usd_df[['DJI30', 'USD_EUR', 'USD/CNY', 'Brent_Oil', 'Gold', 'NASDAQ', 'SP_500', 'EUR/PLN','USD/AED',
                '10_YB', 'Copper', 'USD_GBP', 'USD_JPY', '5_YB', 'USD/RUB', 'Platinum', 'Silver', 'Natural Gas',
                 'Rice Futures','Soy Futures', 'KC HRW Wheat Futures']]
     rr_d1 = (f_df1 - f_df1.shift(1)) / f_df1.shift(1)  # ta linijka kodu liczy wszystkie stopy zwrotu
     rr_df1 = pd.concat([final_PLN_USD, rr_d1], axis=1)
     new_rr_usd = rr_df1.dropna()  
 
-    n_rr_usd = new_rr_usd[['PLN/USD','EUR/PLN','DJI30', 'USD_EUR', 'USD/CNY','Crude_Oil', 'Gold',
+    n_rr_usd = new_rr_usd[['PLN/USD','EUR/PLN','DJI30', 'USD_EUR', 'USD/CNY','Brent_Oil', 'Gold',
                                 'NASDAQ', 'SP_500','10_YB', 'Copper', 'USD_GBP','USD_JPY','5_YB', 'USD/RUB','Platinum', 'USD/AED', 
                                 'Silver', 'Natural Gas','Rice Futures','Soy Futures','KC HRW Wheat Futures']]
     n_rr_usd.fillna(0)
