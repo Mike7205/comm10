@@ -75,7 +75,7 @@ st.html(
 st.sidebar.title('Commodities, Indexies, Currencies & Bonds')
 comm = st.sidebar.selectbox('What do you want to analyse today ?', list(comm_dict.values()))
 comm_f(comm)
-st.sidebar.write('You selected:', comm)
+st.sidebar.write('Main Metrics:', comm)
 st.sidebar.dataframe(comm_data(comm))
 
 # tu wstawimy wykresy 15 minutowe
