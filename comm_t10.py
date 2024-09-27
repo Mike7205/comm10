@@ -68,7 +68,7 @@ def comm_data(comm):
 st.html(
     """
 <style>
-[data-testid="stSidebarContent"] {color: black; background-color: #03B303} #90EE90 #ADD8E6 #9CC2CF
+[data-testid="stSidebarContent"] {color: black; background-color: #D9017A} #90EE90 #ADD8E6 #9CC2CF
 </style>
 """) #91BFCF
 
