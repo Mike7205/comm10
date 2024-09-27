@@ -68,7 +68,7 @@ def comm_data(comm):
 st.html(
     """
 <style>
-[data-testid="stSidebarContent"] {color: black; background-color: #D9017A} #90EE90 #ADD8E6 #9CC2CF
+[data-testid="stSidebarContent"] {color: black; background-color: #A31A1A} #90EE90 #ADD8E6 #9CC2CF
 </style>
 """) #91BFCF
 
@@ -148,7 +148,7 @@ def roll_avr(nums,numl):
     df_c_XDays = df_c1.iloc[xy - oil_p:xy]
       
     fig1 = px.line(df_c_XDays, x='Date', y=['Close','Short_SMA','Long_SMA'], color_discrete_map={'Close':'#d62728',
-                  'Short_SMA': '#f0f921','Long_SMA':'#0d0887'}, width=1000, height=500)
+                  'Short_SMA': '#F39F18','Long_SMA':'#0d0887'}, width=1000, height=500)
     fig1.add_trace(go.Scatter(x=df_c_XDays[df_c_XDays['Buy_Signal'] == 1].Date, y=df_c_XDays[df_c_XDays['Buy_Signal'] == 1]['Short_SMA'], name='Buy_Signal', mode='markers', 
                              marker=dict(color='green', size=15, symbol='triangle-up')))
     fig1.add_trace(go.Scatter(x=df_c_XDays[df_c_XDays['Sell_Signal'] == 1].Date, y=df_c_XDays[df_c_XDays['Sell_Signal'] == 1]['Short_SMA'], name='Sell_Signal',
