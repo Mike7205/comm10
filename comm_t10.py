@@ -31,7 +31,7 @@ comm_dict = {'^GSPC':'SP_500','^DJI':'Dow Jones','^IXIC':'NASDAQ','^VIX':'CBOE V
              'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY', 'GBPUSD=X':'USD_GBP','JPY=X':'USD_JPY','EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD',  
              'RUB=X':'USD/RUB','DX-Y.NYB':'US Dollar Index','^XDE':'Euro Currency Index', '^XDN':'Japanese Yen Currency Index',
              '^XDA':'Australian Dollar Currency Index','^XDB':'British Pound Currency Index','^TNX':'10_YB', '^FVX':'5_YB', 
-             'CL=F':'Crude_Oil','BZ=F':'Brent_Oil ', 'GC=F':'Gold','HG=F':'Copper', 'PL=F':'Platinum','SI=F':'Silver','NG=F':'Natural Gas',
+             'CL=F':'Crude_Oil','BZ=F':'Brent_Oil', 'GC=F':'Gold','HG=F':'Copper', 'PL=F':'Platinum','SI=F':'Silver','NG=F':'Natural Gas',
               'ZR=F':'Rice Futures','ZS=F':'Soy Futures'}
 
 # Pobieranie danych
