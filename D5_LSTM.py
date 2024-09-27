@@ -16,13 +16,11 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 today = date.today()
-comm_dict2 = {'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY','CL=F':'Crude_Oil','GC=F':'Gold','^IXIC':'NASDAQ',
+comm_dict2 = {'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY','BZ=F':'Brent_Oil','GC=F':'Gold','^IXIC':'NASDAQ',
              '^GSPC':'SP_500','^TNX':'10_YB','HG=F':'Copper','GBPUSD=X':'USD_GBP','JPY=X':'USD_JPY',
               'EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD', 'AED=X':'USD/AED','^FVX':'5_YB','RUB=X':'USD/RUB',
               'PL=F':'Platinum','SI=F':'Silver','NG=F':'Natural Gas',
               'ZR=F':'Rice Futures','ZS=F':'Soy Futures','KE=F':'KC HRW Wheat Futures'}
-
-
 
 def model_f(past):
     global final_df
@@ -49,7 +47,7 @@ def model_f(past):
 def data_set_eur():
     eur_df = pd.read_pickle('Nm_data.pkl')
     var_eur = eur_df['EUR/PLN']
-    dict_eur = eur_df[['DJI30', 'USD_EUR', 'USD/CNY', 'Crude_Oil', 'Gold', 'NASDAQ', 'SP_500',
+    dict_eur = eur_df[['DJI30', 'USD_EUR', 'USD/CNY', 'Brent_Oil', 'Gold', 'NASDAQ', 'SP_500',
                    '10_YB', 'Copper', 'USD_GBP', 'USD_JPY', 'PLN/USD', '5_YB','USD/AED',
                    'USD/RUB', 'Platinum', 'Silver', 'Natural Gas', 'Rice Futures',
                    'Soy Futures', 'KC HRW Wheat Futures']]
@@ -57,7 +55,7 @@ def data_set_eur():
     eur_rr_df = pd.concat([var_eur, eur_rr], axis=1)
     eur_rr_f = eur_rr_df.dropna()
 
-    n_rr_eur = eur_rr_f[['EUR/PLN', 'DJI30', 'USD_EUR', 'USD/CNY', 'Crude_Oil',
+    n_rr_eur = eur_rr_f[['EUR/PLN', 'DJI30', 'USD_EUR', 'USD/CNY', 'Brent_Oil',
                         'Gold', 'NASDAQ', 'SP_500', '10_YB', 'Copper', 'USD_GBP', 'USD_JPY','USD/AED',
                         'PLN/USD', '5_YB', 'USD/RUB', 'Platinum', 'Silver', 'Natural Gas',
                         'Rice Futures', 'Soy Futures', 'KC HRW Wheat Futures']]
