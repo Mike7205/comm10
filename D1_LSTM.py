@@ -144,7 +144,15 @@ def _fore_cast(plik):
     index_nan = input_plik['Day + 1 Prediction'].isna().idxmax()
     input_plik.at[index_nan, 'Day + 1 Prediction'] = _fore_value
     input_plik.to_pickle(plik)   
-               
+
+def D5_tabel_daily ():
+    D5_eur_tabel = pd.read_pickle('D5_eur_tabel.pkl')
+    D5_eur_daily = pd.read_pickle('D1_EUR_a.pkl')
+    data = D5_eur_daily['Date'].iloc[-1]
+    k_w = D5_eur_daily['EUR/PLN'].iloc[-1]
+    D5_eur_tabel.loc[D5_eur_tabel['Date'] == data, 'EUR/PLN'] = k_w
+    D5_eur_tabel.to_pickle('D5_eur_tabel.pkl')
+
 def run_D1_models():
     logging.info("Starting model functions")
     model_f(3001)
@@ -165,6 +173,8 @@ def run_D1_models():
             logging.info("Processing USD dataframe")
             LSTM_Model(m)
             logging.info("Saving forecast to D1_USD_a.pkl")
-            _fore_cast('D1_USD_a.pkl')            
+            _fore_cast('D1_USD_a.pkl') 
+
+    D5_tabel_daily ()
             
 run_D1_models()
