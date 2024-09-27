@@ -76,7 +76,9 @@ st.sidebar.title('Commodities, Indexies, Currencies & Bonds')
 comm = st.sidebar.selectbox('What do you want to analyse today ?', list(comm_dict.values()))
 comm_f(comm)
 st.sidebar.write('Main Metrics:', comm)
-st.sidebar.dataframe(comm_data(comm))
+#st.sidebar.dataframe(comm_data(comm))
+side_tab = pd.DataFrame(comm_data(comm))
+st.data_editor(side_tab)
 
 # tu wstawimy wykresy 15 minutowe
 def t1_f(char1):
