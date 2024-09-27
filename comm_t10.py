@@ -73,8 +73,8 @@ st.html(
 """) #91BFCF
 
 st.sidebar.title('Commodities, Indexies, Currencies & Bonds')
-comm = st.sidebar.selectbox('What do you want to analyse today ?', list(comm_dict.values()))
-#comm = st.sidebar.radio('What do you want to analyse today ?', list(comm_dict.values()))
+#comm = st.sidebar.selectbox('What do you want to analyse today ?', list(comm_dict.values()))
+comm = st.sidebar.radio('What do you want to analyse today ?', list(comm_dict.values()))
 comm_f(comm)
 st.sidebar.write('Main Metrics:', comm)
 #st.sidebar.dataframe(comm_data(comm))
