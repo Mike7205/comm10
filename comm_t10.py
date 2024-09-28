@@ -124,6 +124,7 @@ with col2:
 # Definicja wykresu średnich ruchomych 
 st.subheader(f'Short and long rolling averages signals  from NYSE for -> {comm}', divider='blue')
 side_tab = pd.DataFrame(comm_data(comm))
+st.write('Main Metrics:')
 st.data_editor(side_tab,hide_index=True)
 xy = (list(df_c1.index)[-1] + 1)  
 col3, col4, col5 = st.columns([0.4, 0.3, 0.3])
