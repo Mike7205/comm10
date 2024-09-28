@@ -72,7 +72,7 @@ st.html(
 [data-testid="stSidebarContent"] {color: black; background-color: #CC241C} #90EE90 #ADD8E6 #9CC2CF #91BFCF
 </style>
 """)
-st.sidebar.subheader('Indexies, Currencies, Bonds & Commodities', divider=“gray”/"grey")
+st.sidebar.subheader('Indexies, Currencies, Bonds & Commodities', divider="grey")
 comm = st.sidebar.radio('',list(comm_dict.values()))
 comm_f(comm)
 st.sidebar.write('© Michał Leśniewski')
