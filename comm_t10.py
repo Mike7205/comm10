@@ -238,7 +238,7 @@ def Arima_f(comm, size_a):
     
 # definicja wykresu obortów
 def vol_chart(comm):
-    volc = ['Crude_Oil','Gold','Copper','Platinum','Silver','Natural Gas','Rice Futures','Soy Futures','KC HRW Wheat Futures']
+    volc = ['Crude_Oil','Brent_Oil','Gold','Copper','Platinum','Silver','Natural Gas','Rice Futures','Soy Futures','KC HRW Wheat Futures']
     if comm in volc:
 
         Co_V = df_c1[['Date', 'Volume']]
