@@ -103,7 +103,7 @@ def t2_f(char2):
 col1, col2 = st.columns([0.5, 0.5])
 with col1:
     box = list(comm_dict.values())
-    char1 = st.selectbox('Daily trading dynamics', box, index= box.index('Brent_Oil'),key = "<char1>")
+    char1 = st.selectbox('Last 4 hours trading dynamics', box, index= box.index('Brent_Oil'),key = "<char1>")
     t1_f(char1)
     data_x1 = tf_c1.index
     fig_char1 = px.line(tf_c1, x=data_x1, y=['Open','High','Low','Close'],color_discrete_map={
@@ -112,7 +112,7 @@ with col1:
     fig_char1.update_layout(xaxis=None, yaxis=None)
     st.plotly_chart(fig_char1) #use_container_width=True
 with col2:
-    char2 = st.selectbox('Daily trading dynamics', box, index=box.index('PLN/USD'),key = "<char2>")
+    char2 = st.selectbox('Last 4 hours trading dynamics', box, index=box.index('PLN/USD'),key = "<char2>")
     t2_f(char2)
     data_x2 = tf_c2.index
     fig_char2 = px.line(tf_c2, x=data_x2, y=['Open','High','Low','Close'],color_discrete_map={
