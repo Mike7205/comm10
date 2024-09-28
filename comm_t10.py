@@ -77,9 +77,9 @@ st.sidebar.title('Commodities, Indexies, Currencies & Bonds')
 #comm = st.sidebar.selectbox('What do you want to analyse today ?', list(comm_dict.values()))
 comm = st.sidebar.radio('What do you want to analyse today ?', list(comm_dict.values()))
 comm_f(comm)
-st.sidebar.write('Main Metrics:', comm)
-side_tab = pd.DataFrame(comm_data(comm))
-st.sidebar.data_editor(side_tab)
+#st.sidebar.write('Main Metrics:', comm)
+#side_tab = pd.DataFrame(comm_data(comm))
+#st.sidebar.data_editor(side_tab)
 st.sidebar.write('© Michał Leśniewski')
 
 # tu wstawimy wykresy 15 minutowe
@@ -124,7 +124,8 @@ with col2:
 
 # Definicja wykresu średnich ruchomych 
 st.subheader(f'Short and long rolling averages signals for {comm} Prices from NYSE', divider='blue')
-
+side_tab = pd.DataFrame(comm_data(comm))
+st.data_editor(side_tab)
 xy = (list(df_c1.index)[-1] + 1)  
 col3, col4, col5 = st.columns([0.4, 0.3, 0.3])
 with col3:
