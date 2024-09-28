@@ -245,7 +245,7 @@ def vol_chart(comm):
         Co_V['Co_V_M']= Co_V['Volume'].rolling(window=90).mean().fillna(0)
         V_end = (list(Co_V.index)[-1] + 1)
 
-        st.subheader(comm+' Volume in NYSE')
+        st.subheader(comm+' Volume on NYSE', divider='blue')
         Vol = st.slider('How long prices history you need?', 0, V_end, 200, key = "<volume>") 
         Co_V_XD = Co_V.iloc[V_end - Vol:V_end]
 
