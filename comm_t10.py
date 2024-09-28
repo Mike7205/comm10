@@ -118,7 +118,7 @@ with col2:
     st.plotly_chart(fig_char2)
 
 # Definicja wykresu średnich ruchomych 
-st.subheader(f'Short and long rolling averages signals  from NYSE for -> {comm}', divider='blue')
+st.subheader(f'Short and long rolling averages signals for -> {comm}', divider='blue')
 side_tab = pd.DataFrame(comm_data(comm))
 st.write('Main Metrics:')
 st.data_editor(side_tab,hide_index=True)
@@ -163,7 +163,7 @@ def roll_avr(nums,numl):
 roll_avr(nums,numl)
 
 # Definicja wykresu stochastycznego 
-st.subheader(f'Stochastic oscillator signals from NYSE for -> {comm}', divider='blue')
+st.subheader(f'Stochastic oscillator signals for -> {comm}', divider='blue')
 
 xyx = (list(df_c1.index)[-1] + 1)  
 col6, col7, col8 = st.columns([0.4, 0.3, 0.3])
@@ -253,7 +253,8 @@ def vol_chart(comm):
         st.plotly_chart(fig3, use_container_width=True)
      
 vol_chart(comm)
-                               
+
+st.subheader('Prediction models and benchmarks', divider='blue')
 col9, col10, col11, col12 = st.columns(4)
 with col9:
     checkbox_value3 = st.checkbox('Arima model trend prediction for x days',key = "<arima_m>")
