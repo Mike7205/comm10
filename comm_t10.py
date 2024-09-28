@@ -25,8 +25,8 @@ st.title('Selected global economy indicators & own LSTM prediction models')
 
 # Definicje
 today = date.today()
-comm_dict = {'^GSPC':'SP_500','^DJI':'Dow Jones','^IXIC':'NASDAQ','^VIX':'CBOE Volatility Index','^RUT':'Russell 2000',
-             '^BVSP':'IBOVESPA','^FTSE':'FTSE 100','^GDAXI':'DAX PERFORMANCE-INDEX', '^N100':'Euronext 100 Index',
+comm_dict = {'^GSPC':'SP_500','^DJI':'Dow Jones','^IXIC':'NASDAQ','000001.SS':'SSE Composite Index','^HSI':'HANG SENG INDEX','^VIX':'CBOE Volatility Index','^RUT':'Russell 2000',
+             '^BVSP':'IBOVESPA','^FTSE':'FTSE 100','^GDAXI':'DAX PERFORMANCE-INDEX', '^N100':'Euronext 100 Index','^N225':'Nikkei 225',
              'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY', 'GBPUSD=X':'USD_GBP','JPY=X':'USD_JPY','EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD',  
              'RUB=X':'USD/RUB','DX-Y.NYB':'US Dollar Index','^XDE':'Euro Currency Index', '^XDN':'Japanese Yen Currency Index',
              '^XDA':'Australian Dollar Currency Index','^XDB':'British Pound Currency Index','^TNX':'10_YB', '^FVX':'5_YB', 
