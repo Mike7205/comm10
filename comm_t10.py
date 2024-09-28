@@ -88,7 +88,7 @@ def t1_f(char1):
         if name == char1:
             box = yf.Ticker(label)
             tf_c = pd.DataFrame(box.history(period='1d', interval="1m"))
-            tf_c1 = tf_c[-100:]
+            tf_c1 = tf_c[-300:]
     return tf_c1 
 
 def t2_f(char2):
@@ -97,7 +97,7 @@ def t2_f(char2):
         if name == char2:        
             box = yf.Ticker(label)
             tf_c = pd.DataFrame(box.history(period='1d', interval="1m"))
-            tf_c2 = tf_c[-100:]
+            tf_c2 = tf_c[-300:]
     return tf_c2 
 
 col1, col2 = st.columns([0.5, 0.5])
