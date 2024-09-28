@@ -74,7 +74,7 @@ st.html(
 """) #91BFCF
 
 st.sidebar.title('Commodities, Indexies, Currencies & Bonds')
-comm = st.sidebar.radio('What do you want to analyse today ?', list(comm_dict.values()))
+comm = st.sidebar.radio(list(comm_dict.values()))
 comm_f(comm)
 #st.sidebar.write('Main Metrics:', comm)
 #side_tab = pd.DataFrame(comm_data(comm))
