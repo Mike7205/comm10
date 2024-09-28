@@ -73,8 +73,8 @@ st.html(
 </style>
 """) #91BFCF
 
-st.sidebar.title('Commodities, Indexies, Currencies & Bonds')
-comm = st.sidebar.radio(list(comm_dict.values()))
+#st.sidebar.title('Commodities, Indexies, Currencies & Bonds')
+comm = st.sidebar.radio('Indexies, Currencies, Bonds & Commodities',list(comm_dict.values()))
 comm_f(comm)
 #st.sidebar.write('Main Metrics:', comm)
 #side_tab = pd.DataFrame(comm_data(comm))
