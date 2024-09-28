@@ -123,8 +123,7 @@ with col2:
     st.plotly_chart(fig_char2)
 
 # Definicja wykresu średnich ruchomych 
-st.subheader(f'Short and long rolling averages signals for {comm} Prices from NYSE')
-#st.subheader(f'for {comm} Prices from NYSE')
+st.subheader(f'Short and long rolling averages signals for {comm} Prices from NYSE', divider='blue')
 
 xy = (list(df_c1.index)[-1] + 1)  
 col3, col4, col5 = st.columns([0.4, 0.3, 0.3])
@@ -167,8 +166,7 @@ def roll_avr(nums,numl):
 roll_avr(nums,numl)
 
 # Definicja wykresu stochastycznego 
-st.subheader('Stochastic oscillator signals')
-st.subheader(f'for {comm} Prices from NYSE')
+st.subheader(f'Stochastic oscillator signals for {comm} Prices from NYSE', divider='blue')
 
 xyx = (list(df_c1.index)[-1] + 1)  
 col6, col7, col8 = st.columns([0.4, 0.3, 0.3])
