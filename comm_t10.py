@@ -72,13 +72,20 @@ st.html(
 [data-testid="stSidebarContent"] {color: black; background-color: #CC241C} #90EE90 #ADD8E6 #9CC2CF
 </style>
 """) #91BFCF
+st.markdown(
+    """
+    <style>
+    .radio-text {
+        font-size: 20px; /* Zmień rozmiar czcionki według potrzeb */
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-#st.sidebar.title('Commodities, Indexies, Currencies & Bonds')
-comm = st.sidebar.radio('Indexies, Currencies, Bonds & Commodities',list(comm_dict.values()))
+comm = st.sidebar.radio('Indexies, Currencies, Bonds & Commodities',list(comm_dict.values()),
+    format_func=lambda x: f'<span class="radio-text">{x}</span>')
 comm_f(comm)
-#st.sidebar.write('Main Metrics:', comm)
-#side_tab = pd.DataFrame(comm_data(comm))
-#st.sidebar.data_editor(side_tab)
 st.sidebar.write('© Michał Leśniewski')
 
 # tu wstawimy wykresy 15 minutowe
