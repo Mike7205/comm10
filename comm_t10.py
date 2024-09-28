@@ -72,17 +72,7 @@ st.html(
 [data-testid="stSidebarContent"] {color: black; background-color: #CC241C} #90EE90 #ADD8E6 #9CC2CF #91BFCF
 </style>
 """) 
-st.markdown(
-    """
-    <style>
-    .radio-title {
-        font-size: 16px;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-comm = st.sidebar.radio('Indexies, Currencies, Bonds & Commodities',list(comm_dict.values()), format_func=lambda x: f'<span class="radio-title">{x}</span>')
+comm = st.sidebar.radio('Indexies, Currencies, Bonds & Commodities',list(comm_dict.values()))
 comm_f(comm)
 st.sidebar.write('© Michał Leśniewski')
 
