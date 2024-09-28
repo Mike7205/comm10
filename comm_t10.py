@@ -46,7 +46,7 @@ def comm_f(comm):
 
 # Dane historyczne                    
 def comm_data(comm):
-    global Tab_his1
+    global Tab_his
     shape_test=[]
     sh = df_c1.shape[0]
     start_date = df_c1.Date.min()
@@ -60,10 +60,10 @@ def comm_data(comm):
     Tab_his = Tab_length[['Start_Date','End_Date','Close_max','Close_min','Last_close']]
     Tab_his['Start_Date'] = Tab_his['Start_Date'].dt.strftime('%Y-%m-%d')
     Tab_his['End_Date'] = Tab_his['End_Date'].dt.strftime('%Y-%m-%d')
-    Tab_his1 = Tab_his.T
-    Tab_his1.rename(columns={0: "Details"}, inplace=True)
+    #Tab_his1 = Tab_his.T
+    #Tab_his1.rename(columns={0: "Details"}, inplace=True)
     
-    return Tab_his1
+    return Tab_his
 
 #definicja zakładki bocznej
 st.html(
