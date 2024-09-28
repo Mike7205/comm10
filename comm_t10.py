@@ -79,7 +79,7 @@ comm_f(comm)
 st.sidebar.write('Main Metrics:', comm)
 side_tab = pd.DataFrame(comm_data(comm))
 st.sidebar.data_editor(side_tab)
-st.write('© Michał Leśniewski')
+st.sidebar.write('© Michał Leśniewski')
 
 # tu wstawimy wykresy 15 minutowe
 def t1_f(char1):
