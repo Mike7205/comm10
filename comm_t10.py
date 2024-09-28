@@ -21,7 +21,8 @@ from statsmodels.tsa.arima.model import ARIMA
 st.set_page_config(layout="wide")
 
 # start definicji strony
-st.title('Selected global economy indicators & own LSTM prediction models')
+st.title('Selected global economy indicators')
+st.subheader('& own LSTM prediction models', divider='blue')
 
 # Definicje
 today = date.today()
@@ -99,7 +100,6 @@ def t2_f(char2):
             tf_c = pd.DataFrame(box.history(period='1d', interval="1m"))
             tf_c2 = tf_c[-100:]
     return tf_c2 
-
 
 col1, col2 = st.columns([0.5, 0.5])
 with col1:
