@@ -23,26 +23,21 @@ comm_dict2 = {'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY','BZ=F':'Brent_Oil','GC=F':'
               'ZR=F':'Rice Futures','ZS=F':'Soy Futures','KE=F':'KC HRW Wheat Futures'}
 
 def model_f(past):
-    global final_df
-    df_list = []
-    col_n = {'Close': 'DJI30'}
-    x = pd.DataFrame(yf.download('^DJI', start='2003-12-01', end = today))
-    x1 = x.reset_index()
-    x2 = x1[['Date','Close']][-past:]
-    x2.rename(columns = col_n, inplace=True)
-    x2 = pd.DataFrame(x2.reset_index(drop=True)) 
-    for label, name in comm_dict2.items(): 
+    m_tab = None  # Inicjalizacja zmiennej m_tab
+    for label, name in comm_dict2.items():
         col_name = {'Close': name}
-        y1 = pd.DataFrame(yf.download(label, start='2003-12-01', end = today)) 
-        y1.reset_index()
+        y1 = pd.DataFrame(yf.download(label, start='2003-12-01', end=today))
         y2 = y1[['Close']][-past:]
         y2 = pd.DataFrame(y2.reset_index(drop=True))
-        y2.rename(columns = col_name, inplace=True)
-        m_tab = pd.concat([x2, y2], axis=1)
-        df_list.append(m_tab)
-        final_df = pd.concat(df_list, axis=1)
-        final_df = final_df.T.drop_duplicates().T
-        final_df.to_pickle('Nm_data.pkl')
+        y2.rename(columns=col_name, inplace=True)
+
+        if m_tab is None:
+            m_tab = y2  # Tworzenie tabeli w pierwszym przebiegu
+        else:
+            m_tab = pd.concat([m_tab, y2], axis=1)
+
+    m_tab.fillna(0)
+    m_tab.to_pickle('Nm_data.pkl')
         
 def data_set_eur():
     eur_df = pd.read_pickle('Nm_data.pkl')
