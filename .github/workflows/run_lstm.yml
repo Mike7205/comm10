@@ -47,7 +47,7 @@ jobs:
     - name: Pull latest changes
       run: git pull origin master
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.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 }}
 
     - name: Commit and push results
       run: |
@@ -57,7 +57,7 @@ jobs:
         git commit -m 'Add results from D1_LSTM.py'
         git push
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.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 }}
 
     - name: Move files
       run: |
@@ -70,4 +70,4 @@ jobs:
         git commit -m 'Move D1_EUR_a.pkl and D1_USD_a.pkl and D5_eur_tabel.pkl from artifacts to root directory'
         git push origin master  
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.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 }}
