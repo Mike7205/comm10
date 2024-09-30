@@ -16,7 +16,7 @@ import logging
 logging.basicConfig(level=logging.INFO)
 
 today = date.today()
-comm_dict2 = {'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY','BZ=F':'Brent_Oil','GC=F':'Gold','^IXIC':'NASDAQ',
+comm_dict2 = {'^DJI':'DJI30','EURUSD=X':'USD_EUR','CNY=X':'USD/CNY','BZ=F':'Brent_Oil','GC=F':'Gold','^IXIC':'NASDAQ',
              '^GSPC':'SP_500','^TNX':'10_YB','HG=F':'Copper','GBPUSD=X':'USD_GBP','JPY=X':'USD_JPY',
               'EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD', 'AED=X':'USD/AED','^FVX':'5_YB','RUB=X':'USD/RUB',
               'PL=F':'Platinum','SI=F':'Silver','NG=F':'Natural Gas',
