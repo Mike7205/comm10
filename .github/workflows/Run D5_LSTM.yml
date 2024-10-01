@@ -1,8 +1,7 @@
-name: Run D5_LSTM.py
+name: Run D5_Tab.py
 
 on:
-  schedule:
-    - cron: '30 7 * * 4'  # W czwartki o 7:30 UTC (9:30 czasu warszawskiego)
+  workflow_dispatch:
 
 jobs:
   run-lstm:
@@ -28,42 +27,47 @@ jobs:
         pip install -r requirements.txt  # Zakładając, że masz plik requirements.txt
         pip install git+https://github.com/statsmodels/statsmodels.git
 
-    - name: Run D5_LSTM.py
-      run: python D5_LSTM.py
+    - name: Run D5_Tab.py
+      run: |
+        echo "Running D5_Tab.py"
+        python D5_Tab.py
+        echo "Finished running D5_Tab.py"
 
     - name: Save results
       run: |
+        echo "Saving results"
         mkdir -p artifacts
         cp D5_eur_tabel.pkl artifacts/
-        
+        echo "Results saved to artifacts"
+
     - name: Upload artifact
       uses: actions/upload-artifact@v3
       with:
         name: results
         path: artifacts/
 
-    - name: Pull latest changes
-      run: git pull origin master
-      env:
-        GITHUB_TOKEN: ${{ secrets.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 }}
-
     - name: Commit and push results
       run: |
+        echo "Committing and pushing results"
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
         git add artifacts/D5_eur_tabel.pkl
-        git commit -m 'Add results from D5_LSTM.py'
+        git commit -m 'Add results from D5_Tab.py' || echo "No changes to commit"
         git push
+        echo "Results committed and pushed"
       env:
         GITHUB_TOKEN: ${{ secrets.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 }}
 
     - name: Move files
       run: |
+        echo "Moving files"
         mv artifacts/D5_eur_tabel.pkl .
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git add D5_eur_tabel.pkl 
-        git commit -m 'Move D5_eur_tabel.pkl from artifacts to root directory'
-        git push origin master  
-    env:
-        GITHUB_TOKEN: ${{ secrets.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 }}   
+        git add D5_eur_tabel.pkl
+        git commit -m 'Move D5_eur_tabel.pkl from artifacts to root directory' || echo "No changes to commit"
+        git push origin master
+        echo "Files moved and pushed"
+      env:
+        GITHUB_TOKEN: ${{ secrets.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 }}
+         
