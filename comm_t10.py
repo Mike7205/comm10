@@ -243,7 +243,7 @@ def vol_chart(comm):
         Co_V['Co_V_M']= Co_V['Volume'].rolling(window=90).mean().fillna(0)
         V_end = (list(Co_V.index)[-1] + 1)
 
-        st.subheader(comm+' Volume on NYSE', divider='blue')
+        st.subheader(comm+' Volume', divider='blue')
         Vol = st.slider('How long prices history you need?', 0, V_end, 200, key = "<volume>") 
         Co_V_XD = Co_V.iloc[V_end - Vol:V_end]
 
@@ -256,6 +256,23 @@ def vol_chart(comm):
 vol_chart(comm)
 
 st.subheader('Prediction models and benchmarks', divider='blue')
+def D5_tabel_date(): # Konwersja kolumny 'Date' na typ daty
+    D1EUR_df = pd.read_pickle('D1_EUR_a.pkl')
+    D5T_df = pd.read_pickle('D5_eur_tabel.pkl')
+
+    D5T_df['Date'] = pd.to_datetime(D5T_df['Date'])
+    D1EUR_df['Date'] = pd.to_datetime(D1EUR_df['Date'])
+
+    for index, row in D5T_df.iterrows():
+        if pd.isna(row['EUR/PLN']):
+            date_to_find = row['Date']
+            matching_row = D1EUR_df.loc[D1EUR_df['Date'] == date_to_find]
+            if not matching_row.empty:
+                value_to_copy = matching_row['EUR/PLN'].values[0]
+                D5T_df.at[index, 'EUR/PLN'] = value_to_copy
+                
+    D5T_df.to_pickle('D5_eur_tabel.pkl')
+
 col9, col10, col11, col12 = st.columns(4)
 with col9:
     checkbox_value3 = st.checkbox('Arima model trend prediction for x days',key = "<arima_m>")
@@ -269,6 +286,7 @@ with col10:
     checkbox_value2 = st.checkbox('Own LSTM EUR/PLN D+5 prediction model',key = "<lstm1>")
 
 if checkbox_value2:
+    D5_tabel_date()
     val_D5E = pd.read_pickle('D5_eur_tabel.pkl')
     val_D5EP = val_D5E[['Date','Day + 5 Prediction']][-100:]
     val_D5EU = pd.read_pickle('D5_eur_tabel.pkl')
