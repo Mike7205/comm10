@@ -46,14 +46,10 @@ jobs:
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
         git add artifacts/D5_eur_tabel.pkl
-        if git diff-index --quiet HEAD --; then
-          echo "No changes to commit"
-        else
-          git commit -m 'Add results from D5_Tab.py'
-          git push
-        fi
+        git commit -m 'Add results from D5_Tab.py' || echo "No changes to commit"
+        git push
       env:
-        GITHUB_TOKEN: ${{ secrets.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 }}
+        GITHUB_TOKEN: ${{ secrets.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  }}
 
     - name: Move files
       run: |
@@ -61,11 +57,7 @@ jobs:
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add D5_eur_tabel.pkl
-        if git diff-index --quiet HEAD --; then
-          echo "No changes to commit"
-        else
-          git commit -m 'Move D5_eur_tabel.pkl from artifacts to root directory'
-          git push origin master
-        fi
+        git commit -m 'Move D5_eur_tabel.pkl from artifacts to root directory' || echo "No changes to commit"
+        git push origin master
       env:
-        GITHUB_TOKEN: ${{ secrets.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 }}
+        GITHUB_TOKEN: ${{ secrets.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  }}
