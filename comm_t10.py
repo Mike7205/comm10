@@ -76,6 +76,7 @@ st.sidebar.subheader('Indexies, Currencies, Bonds & Commodities', divider="grey"
 comm = st.sidebar.radio('',list(comm_dict.values()))
 comm_f(comm)
 st.sidebar.write('© Michał Leśniewski')
+st.image('Footer3.gif', use_column_width=True)
 
 # tu wstawimy wykresy 15 minutowe
 def t1_f(char1):
