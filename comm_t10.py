@@ -294,7 +294,7 @@ if checkbox_value2:
     val_D5EUR = val_D5EU[['Date','EUR/PLN']][-100:]
     day_es = val_D5EUR.shape[0]
 
-    st.subheader(f'Predictions for the last {day_es} days', divider='red')
+    st.subheader(f'Predictions for the last {day_es} days', divider='grey')
   
     fig_D5E = px.line(val_D5EP, x='Date', y=['Day + 5 Prediction'],color_discrete_map={'Day + 5 Prediction':'red'}, width=1500, height=500)
     fig_D5E.add_trace(go.Scatter(x=val_D5EUR['Date'], y=val_D5EUR['EUR/PLN'], mode='lines', name='EUR/PLN', line=dict(color='blue')))
@@ -313,7 +313,7 @@ if checkbox_value4:
     val_1 = val[['Date','EUR/PLN','Day + 1 Prediction']][-100:]      #.iloc[:-1]
     day_s = val_1.shape[0]
 
-    st.subheader(f'Predictions for the last {day_s} days', divider='red')
+    st.subheader(f'Predictions for the last {day_s} days', divider='grey')
 
     fig_val = px.line(val_1, x='Date', y=['EUR/PLN','Day + 1 Prediction'],color_discrete_map={
                  'EUR/PLN':'blue','Day + 1 Prediction':'red'}, width=1000, height=500 ) 
@@ -332,7 +332,7 @@ if checkbox_value5:
     val_s1 = val_s[['Date','USD/PLN','Day + 1 Prediction']][-100:]      #.iloc[:-1]
     day_s1 = val_s1.shape[0]
 
-    st.subheader(f'Predictions for the last {day_s1} days', divider='red')
+    st.subheader(f'Predictions for the last {day_s1} days', divider='grey')
 
     fig_vals = px.line(val_s1, x='Date', y=['USD/PLN','Day + 1 Prediction'],color_discrete_map={
                  'USD/PLN':'#03B303','Day + 1 Prediction':'#D9017A'}, width=1000, height=500 ) # #89CFF0
