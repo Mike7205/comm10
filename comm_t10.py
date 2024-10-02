@@ -278,7 +278,7 @@ with col9:
     checkbox_value3 = st.checkbox('Arima model trend prediction for x days',key = "<arima_m>")
 
 if checkbox_value3:
-    st.subheader(f'{comm} Arima model prediction')
+    st.subheader(f'{comm} Arima model prediction', divider='grey')
     size_a = st.radio('Prediction for ... days ?: ', [5,4,3,2,1], horizontal=True, key = "<arima21>")
     Arima_f(comm,size_a)    
 
