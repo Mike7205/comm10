@@ -300,7 +300,7 @@ if checkbox_value2:
 
     fig_D5E.update_layout(plot_bgcolor='white',showlegend=True,xaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'),
                       yaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'))
-    fig_D5E.add_vline(x = today,line_width=1, line_dash="dash", line_color="black")
+    #fig_D5E.add_vline(x = today,line_width=1, line_dash="dash", line_color="black")
     st.plotly_chart(fig_D5E)
 
 with col11:
