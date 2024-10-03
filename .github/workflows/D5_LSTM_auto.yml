@@ -1,4 +1,4 @@
-name: Run D5_LSTM.py
+name: Auto D5_LSTM.py
 
 on:
   schedule:
