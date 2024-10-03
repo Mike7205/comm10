@@ -26,7 +26,7 @@ st.subheader('& own LSTM prediction models', divider='blue')
 
 # Definicje
 today = date.today()
-comm_dict = {'^GSPC':'SP_500','^DJI':'Dow Jones','^IXIC':'NASDAQ','000001.SS':'SSE Composite Index','^HSI':'HANG SENG INDEX','^VIX':'CBOE Volatility Index','^RUT':'Russell 2000',
+comm_dict = {'^GSPC':'SP_500','^DJI':'DJI30','^IXIC':'NASDAQ','000001.SS':'SSE Composite Index','^HSI':'HANG SENG INDEX','^VIX':'CBOE Volatility Index','^RUT':'Russell 2000',
              '^BVSP':'IBOVESPA','^FTSE':'FTSE 100','^GDAXI':'DAX PERFORMANCE-INDEX', '^N100':'Euronext 100 Index','^N225':'Nikkei 225',
              'EURUSD=X':'USD_EUR','CNY=X':'USD/CNY', 'GBPUSD=X':'USD_GBP','JPY=X':'USD_JPY','EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD',  
              'RUB=X':'USD/RUB','DX-Y.NYB':'US Dollar Index','^XDE':'Euro Currency Index', '^XDN':'Japanese Yen Currency Index',
