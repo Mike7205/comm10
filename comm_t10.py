@@ -104,7 +104,7 @@ with col1:
     t1_f(char1)
     data_x1 = tf_c1.index
     fig_char1 = px.line(tf_c1, x=data_x1, y=['Open','High','Low','Close'],color_discrete_map={
-                 'Open':'yellow','High':'red','Low':'blue','Close':'green'}, width=600, height=400) 
+                 'Open':'yellow','High':'red','Low':'blue','Close':'green'}, width=750, height=400) 
     fig_char1.update_layout(showlegend=False)
     fig_char1.update_layout(xaxis=None, yaxis=None)
     st.plotly_chart(fig_char1) #use_container_width=True
@@ -113,7 +113,7 @@ with col2:
     t2_f(char2)
     data_x2 = tf_c2.index
     fig_char2 = px.line(tf_c2, x=data_x2, y=['Open','High','Low','Close'],color_discrete_map={
-                 'Open':'yellow','High':'red','Low':'blue','Close':'green'}, width=600, height=400) 
+                 'Open':'yellow','High':'red','Low':'blue','Close':'green'}, width=750, height=400) 
     fig_char2.update_layout(showlegend=True)
     fig_char2.update_layout(xaxis=None, yaxis=None)
     st.plotly_chart(fig_char2)
