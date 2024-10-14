@@ -361,16 +361,17 @@ try:
 
         # Wyświetlenie tabeli z aktywnymi linkami
         AgGrid(df_news, gridOptions=grid_options, enable_enterprise_modules=True, height=400, fit_columns_on_grid_load=True, allow_unsafe_jscode=True)
-        # Konfigurowanie AgGrid
+         # Konfigurowanie AgGrid
         gb = GridOptionsBuilder.from_dataframe(df_news)
         gb.configure_pagination(paginationAutoPageSize=True)
         gb.configure_default_column(wrapText=True, autoHeight=True)
         grid_options = gb.build()
 
         # Wyświetlenie tabeli bez aktywnych linków
-        AgGrid(df_news, gridOptions=grid_options, enable_enterprise_modules=True, height=400, fit_columns_on_grid_load=True, allow_unsafe_jscode=True
-    #else:
-    #    st.info("There is no relevant infos as for now")
+        AgGrid(df_news, gridOptions=grid_options, enable_enterprise_modules=True, height=400, fit_columns_on_grid_load=True, allow_unsafe_jscode=True)
+    
+    else:
+        st.info("Brak dostępnych wiadomości dla wybranego symbolu.")
     
 except KeyError:
     st.error("KeyError: Symbol not found in Yahoo Finance.")
