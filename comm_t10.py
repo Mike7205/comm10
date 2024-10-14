@@ -350,8 +350,8 @@ try:
     
     if news:
         news_data = [{"Title": item['title'], "Link": item['link'], "Publisher": item['publisher']} for item in news]
-        df_news = pd.DataFrame(news_data)
-        st.markdown(df_news.to_html(escape=False, index=False), unsafe_allow_html=True)   
+        #df_news = pd.DataFrame(news_data)
+        st.markdown(news_data.to_html(escape=False, index=False), unsafe_allow_html=True)   
     else:
         st.info("No relevant news for this subject")
     
