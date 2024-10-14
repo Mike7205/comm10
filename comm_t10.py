@@ -354,4 +354,4 @@ try:
 except KeyError:
     st.error("KeyError: Symbol not found in Yahoo Finance.")
 except Exception as e:
-    st.error(f"An unexpected error occurred: {e}"
+    st.error(f"An unexpected error occurred: {e}")
