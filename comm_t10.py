@@ -341,3 +341,13 @@ if checkbox_value5:
                       yaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'))
    
     st.plotly_chart(fig_vals, use_container_width=True)
+
+with st.form("Yahoo_news"):
+    t_comm = next(key for key, value in comm_dict.items() if value == comm)
+    data = yf.Ticker(t_comm)
+    news = data.news
+  for item in news:
+      st.write(f"Title: {item['title']}")
+      st.write(f"Link: {item['link']}")
+      st.write(f"Publisher: {item['publisher']}\n")
+      
