@@ -352,7 +352,7 @@ try:
     #st.write(f"Link: {item['link']}")
     #st.write(f"Link: <a href='{item['link']}' target='_blank'>{item['link']}</a>", unsafe_allow_html=True)
     st.markdown(f"[Link]({item['link']})"
-    st.write(f"Publisher: {item['publisher']}\n")     
+    #st.write(f"Publisher: {item['publisher']}\n")     
 except KeyError:
     st.error("KeyError: Symbol not found in Yahoo Finance.")
 except Exception as e:
