@@ -346,8 +346,8 @@ with st.form("Yahoo_news"):
     t_comm = next(key for key, value in comm_dict.items() if value == comm)
     data = yf.Ticker(t_comm)
     news = data.news
-  for item in news:
-      st.write(f"Title: {item['title']}")
-      st.write(f"Link: {item['link']}")
-      st.write(f"Publisher: {item['publisher']}\n")
+    for item in news:
+        st.write(f"Title: {item['title']}")
+        st.write(f"Link: {item['link']}")
+        st.write(f"Publisher: {item['publisher']}\n")
       
