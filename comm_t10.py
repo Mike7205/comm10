@@ -351,6 +351,9 @@ try:
             st.write(f"Title: {item['title']}")
             st.write(f"Link: {item['link']}")
             st.write(f"Publisher: {item['publisher']}\n")
+          
+        st.form_submit_button("Take a look")
+      
 except KeyError:
     st.error("KeyError: Symbol not found in Yahoo Finance.")
 except Exception as e:
