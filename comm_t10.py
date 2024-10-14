@@ -348,12 +348,30 @@ try:
     data = yf.Ticker(t_comm)
     news = data.news
     
+    #if news:
+    #    news_data = [{"Title": item['title'], "Link": item['link'], "Publisher": item['publisher']} for item in news]
+    #    #df_news = pd.DataFrame(news_data)
+    #    st.markdown(news_data.to_html(escape=False, index=False), unsafe_allow_html=True)   
+    #else:
+    #    st.info("No relevant news for this subject")
     if news:
-        news_data = [{"Title": item['title'], "Link": item['link'], "Publisher": item['publisher']} for item in news]
-        #df_news = pd.DataFrame(news_data)
-        st.markdown(news_data.to_html(escape=False, index=False), unsafe_allow_html=True)   
+        # Tworzenie listy słowników z danymi
+        news_data = [{"Title": item['title'], 
+                      "Link": f"<a href='{item['link']}' target='_blank'>{item['link']}</a>",
+                      "Publisher": item['publisher']} for item in news]
+
+        # Generowanie HTML tabeli bez dataframe
+        table = "<table><tr><th>Title</th><th>Link</th><th>Publisher</th></tr>"
+        for item in news_data:
+            row = f"<tr><td>{item['Title']}</td><td>{item['Link']}</td><td>{item['Publisher']}</td></tr>"
+            table += row
+        table += "</table>"
+
+        # Wyświetlenie tabeli
+        st.markdown(table, unsafe_allow_html=True)
+    
     else:
-        st.info("No relevant news for this subject")
+        st.info("Brak dostępnych wiadomości dla wybranego symbolu.")  
     
 except KeyError:
     st.error("KeyError: Symbol not found in Yahoo Finance.")
