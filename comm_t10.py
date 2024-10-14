@@ -369,8 +369,8 @@ try:
 
         # Wyświetlenie tabeli bez aktywnych linków
         AgGrid(df_news, gridOptions=grid_options, enable_enterprise_modules=True, height=400, fit_columns_on_grid_load=True, allow_unsafe_jscode=True
-    else:
-        st.info("There is no relevant infos as for now")
+    #else:
+    #    st.info("There is no relevant infos as for now")
     
 except KeyError:
     st.error("KeyError: Symbol not found in Yahoo Finance.")
