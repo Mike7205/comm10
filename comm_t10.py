@@ -353,7 +353,7 @@ try:
         df_news = pd.DataFrame(news_data)
         st.markdown(df_news.to_html(escape=False, index=False), unsafe_allow_html=True)   
     else:
-        st.info("Brak dostępnych wiadomości dla wybranego symbolu.")
+        st.info("No relevant news for this subject")
     
 except KeyError:
     st.error("KeyError: Symbol not found in Yahoo Finance.")
