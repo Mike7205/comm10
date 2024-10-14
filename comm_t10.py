@@ -255,6 +255,33 @@ def vol_chart(comm):
      
 vol_chart(comm)
 
+try:
+    st.subheader(f'Yahoo news related to {comm}', divider='green')
+    t_comm = next(key for key, value in comm_dict.items() if value == comm)
+    data = yf.Ticker(t_comm)
+    news = data.news
+    
+    if news:
+        news_data = [{"Title": item['title'], 
+                      "Link": f"<a href='{item['link']}' target='_blank'>{item['link']}</a>",
+                      "Publisher": item['publisher']} for item in news]
+
+        table = "<table><tr><th>Title</th><th>Link</th><th>Publisher</th></tr>"
+        for item in news_data:
+            row = f"<tr><td>{item['Title']}</td><td>{item['Link']}</td><td>{item['Publisher']}</td></tr>"
+            table += row
+        table += "</table>"
+
+        st.markdown(table, unsafe_allow_html=True)
+    
+    else:
+        st.info("There is no relevant news for this topic")  
+    
+except KeyError:
+    st.error("KeyError: Symbol not found in Yahoo Finance.")
+except Exception as e:
+    st.error(f"An unexpected error occurred: {e}")
+
 st.subheader('Prediction models and benchmarks', divider='blue')
 def D5_tabel_date(): # Konwersja kolumny 'Date' na typ daty
     D1EUR_df = pd.read_pickle('D1_EUR_a.pkl')
@@ -341,30 +368,3 @@ if checkbox_value5:
                       yaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'))
    
     st.plotly_chart(fig_vals, use_container_width=True)
-
-try:
-    st.subheader(f'Yahoo news related to {comm}', divider='green')
-    t_comm = next(key for key, value in comm_dict.items() if value == comm)
-    data = yf.Ticker(t_comm)
-    news = data.news
-    
-    if news:
-        news_data = [{"Title": item['title'], 
-                      "Link": f"<a href='{item['link']}' target='_blank'>{item['link']}</a>",
-                      "Publisher": item['publisher']} for item in news]
-
-        table = "<table><tr><th>Title</th><th>Link</th><th>Publisher</th></tr>"
-        for item in news_data:
-            row = f"<tr><td>{item['Title']}</td><td>{item['Link']}</td><td>{item['Publisher']}</td></tr>"
-            table += row
-        table += "</table>"
-
-        st.markdown(table, unsafe_allow_html=True)
-    
-    else:
-        st.info("There is no relevant news for this topic")  
-    
-except KeyError:
-    st.error("KeyError: Symbol not found in Yahoo Finance.")
-except Exception as e:
-    st.error(f"An unexpected error occurred: {e}")
