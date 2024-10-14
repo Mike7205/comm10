@@ -349,8 +349,7 @@ try:
     news = data.news
     for item in news:
         st.write(f"Title: {item['title']}")
-        #st.markdown(f"[Link]({item['link']})")
-        st.components.v1.iframe(item['link'], height=600)
+        st.markdown(f"[Link]({item['link']})", unsafe_allow_html=True)
         st.write(f"Publisher: {item['publisher']}\n")
 except KeyError:
     st.error("KeyError: Symbol not found in Yahoo Finance.")
