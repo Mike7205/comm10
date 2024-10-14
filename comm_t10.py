@@ -356,7 +356,7 @@ try:
         # Konfigurowanie AgGrid
         #gb = GridOptionsBuilder.from_dataframe(df_news)
         #gb.configure_pagination(paginationAutoPageSize=True)
-        3gb.configure_default_column(wrapText=True, autoHeight=True)
+        #gb.configure_default_column(wrapText=True, autoHeight=True)
         #grid_options = gb.build()
 
         # Wyświetlenie tabeli z aktywnymi linkami
