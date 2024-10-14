@@ -343,16 +343,14 @@ if checkbox_value5:
     st.plotly_chart(fig_vals, use_container_width=True)
 
 try:
-  st.subheader(f'Yahoo news related to {comm}', divider='green')
-  t_comm = next(key for key, value in comm_dict.items() if value == comm)
-  data = yf.Ticker(t_comm)
-  news = data.news
-  for item in news:
-    st.write(f"Title: {item['title']}")
-    #st.write(f"Link: {item['link']}")
-    #st.write(f"Link: <a href='{item['link']}' target='_blank'>{item['link']}</a>", unsafe_allow_html=True)
-    st.markdown(f"[Link]({item['link']})"
-    #st.write(f"Publisher: {item['publisher']}\n")     
+    st.subheader(f'Yahoo news related to {comm}', divider='green')
+    t_comm = next(key for key, value in comm_dict.items() if value == comm)
+    data = yf.Ticker(t_comm)
+    news = data.news
+    for item in news:
+        st.write(f"Title: {item['title']}")
+        st.markdown(f"[Link]({item['link']})")
+        st.write(f"Publisher: {item['publisher']}\n")
 except KeyError:
     st.error("KeyError: Symbol not found in Yahoo Finance.")
 except Exception as e:
