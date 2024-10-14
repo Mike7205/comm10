@@ -342,12 +342,16 @@ if checkbox_value5:
    
     st.plotly_chart(fig_vals, use_container_width=True)
 
-with st.form("Yahoo_news"):
-    t_comm = next(key for key, value in comm_dict.items() if value == comm)
-    data = yf.Ticker(t_comm)
-    news = data.news
-    for item in news:
-        st.write(f"Title: {item['title']}")
-        st.write(f"Link: {item['link']}")
-        st.write(f"Publisher: {item['publisher']}\n")
-      
+try:
+    with st.form("Yahoo_news"):
+        t_comm = next(key for key, value in comm_dict.items() if value == comm)
+        data = yf.Ticker(t_comm)
+        news = data.news
+        for item in news:
+            st.write(f"Title: {item['title']}")
+            st.write(f"Link: {item['link']}")
+            st.write(f"Publisher: {item['publisher']}\n")
+except KeyError:
+    st.error("KeyError: Symbol not found in Yahoo Finance.")
+except Exception as e:
+    st.error(f"An unexpected error occurred: {e}"
