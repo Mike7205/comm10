@@ -347,9 +347,7 @@ try:
     t_comm = next(key for key, value in comm_dict.items() if value == comm)
     data = yf.Ticker(t_comm)
     news = data.news
-    # Pobierz surowe dane
-    news = data.news
-    st.write(news)  # Wyświetl surowe dane, aby zobaczyć, co jest zwracane
+    
     if news:
         # Tworzenie listy słowników z danymi
         news_data = [{"Title": item['title'], "Link": item['link'], "Publisher": item['publisher']} for item in news]
@@ -358,7 +356,7 @@ try:
         df_news = pd.DataFrame(news_data)
         
         # Wyświetlenie tabeli
-        st.data_editor(df_news)
+        st.data_editor(df_news, use_container_width=True)
     else:
         st.info("Brak dostępnych wiadomości dla wybranego symbolu.")
     
