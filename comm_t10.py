@@ -344,6 +344,7 @@ if checkbox_value5:
 
 try:
     with st.form("Yahoo_news"):
+        st.subheader(f'Yahoo news related to {comm}', divider='green')
         t_comm = next(key for key, value in comm_dict.items() if value == comm)
         data = yf.Ticker(t_comm)
         news = data.news
