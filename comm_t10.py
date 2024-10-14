@@ -349,7 +349,7 @@ try:
     news = data.news
     
     if news:
-        news_data = [{"Title": item['title'], "Link": item['link'], "Publisher": item['publisher']} for item in news]
+        news_data = [{"Title": item['title'], "Link": {item['link']}, "Publisher": item['publisher']} for item in news]
         df_news = pd.DataFrame(news_data)
         st.markdown(df_news.to_html(escape=False, index=False), unsafe_allow_html=True)   
     else:
