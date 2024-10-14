@@ -122,7 +122,6 @@ with col2:
 st.subheader(f'Short and long rolling averages signals for -> {comm}', divider='blue')
 side_tab = pd.DataFrame(comm_data(comm))
 st.write('Main Metrics:')
-#st.data_editor(side_tab,hide_index=True)
 st.markdown(side_tab.to_html(escape=False, index=False), unsafe_allow_html=True)
 xy = (list(df_c1.index)[-1] + 1)  
 col3, col4, col5 = st.columns([0.4, 0.3, 0.3])
@@ -353,7 +352,6 @@ try:
         news_data = [{"Title": item['title'], "Link": item['link'], "Publisher": item['publisher']} for item in news]
         df_news = pd.DataFrame(news_data)
         st.markdown(df_news.to_html(escape=False, index=False), unsafe_allow_html=True)  
-        #st.dataframe(df_news, hide_index=True)
     else:
         st.info("There is no relevant infos as for now")
     
