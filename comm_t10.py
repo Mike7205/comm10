@@ -349,16 +349,12 @@ try:
     news = data.news
     
     if news:
-        # Tworzenie listy słowników z danymi
-        news_data = [{"Title": item['title'], "Link": item['link'], "Publisher": item['publisher']} for item in news]
-        
-        # Przekształcenie listy na DataFrame
+        #news_data = [{"Title": item['title'], "Link": item['link'], "Publisher": item['publisher']} for item in news]
+        news_data = [{"Title": item['title'], "Link": f"[{item['link']}]({item['link']})", "Publisher": item['publisher']} for item in news]
         df_news = pd.DataFrame(news_data)
-        
-        # Wyświetlenie tabeli
-        st.data_editor(df_news, use_container_width=True)
+        st.data_editor(df_news.reset_index(drop=True), use_container_width=True)
     else:
-        st.info("Brak dostępnych wiadomości dla wybranego symbolu.")
+        st.info("There is no relevant infos as for now")
     
 except KeyError:
     st.error("KeyError: Symbol not found in Yahoo Finance.")
