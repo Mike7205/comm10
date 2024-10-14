@@ -353,7 +353,7 @@ try:
         news_data = [{"Title": item['title'], "Link": f"[{item['link']}]({item['link']})", "Publisher": item['publisher']} for item in news]
         df_news = pd.DataFrame(news_data)
         #st.data_editor(df_news.reset_index(drop=True), use_container_width=True)
-        for index, row in df_news.iterrows():
+        for index, row in st.data_editor.df_news.iterrows():
             st.markdown(f"**Title**: {row['Title']}")
             st.markdown(f"**Link**: [{row['Link']}]({row['Link']})")
             st.markdown(f"**Publisher**: {row['Publisher']}")
