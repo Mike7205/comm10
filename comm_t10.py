@@ -16,7 +16,6 @@ from sklearn.linear_model import LinearRegression
 from streamlit import set_page_config
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 from statsmodels.tsa.arima.model import ARIMA
-from st_aggrid import AgGrid, GridOptionsBuilder
 
 # Set page configuration for full width
 st.set_page_config(layout="wide")
@@ -352,24 +351,7 @@ try:
     if news:
         news_data = [{"Title": item['title'], "Link": item['link'], "Publisher": item['publisher']} for item in news]
         df_news = pd.DataFrame(news_data)
-        #st.markdown(df_news.to_html(escape=False, index=False), unsafe_allow_html=True)
-        # Konfigurowanie AgGrid
-        #gb = GridOptionsBuilder.from_dataframe(df_news)
-        #gb.configure_pagination(paginationAutoPageSize=True)
-        #gb.configure_default_column(wrapText=True, autoHeight=True)
-        #grid_options = gb.build()
-
-        # Wyświetlenie tabeli z aktywnymi linkami
-        AgGrid(df_news, gridOptions=grid_options, enable_enterprise_modules=True, height=400, fit_columns_on_grid_load=True, allow_unsafe_jscode=True)
-         # Konfigurowanie AgGrid
-        gb = GridOptionsBuilder.from_dataframe(df_news)
-        gb.configure_pagination(paginationAutoPageSize=True)
-        gb.configure_default_column(wrapText=True, autoHeight=True)
-        grid_options = gb.build()
-
-        # Wyświetlenie tabeli bez aktywnych linków
-        AgGrid(df_news, gridOptions=grid_options, enable_enterprise_modules=True, height=400, fit_columns_on_grid_load=True, allow_unsafe_jscode=True)
-    
+        st.markdown(df_news.to_html(escape=False, index=False), unsafe_allow_html=True)   
     else:
         st.info("Brak dostępnych wiadomości dla wybranego symbolu.")
     
