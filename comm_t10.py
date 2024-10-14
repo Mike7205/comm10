@@ -362,7 +362,7 @@ try:
         st.markdown(table, unsafe_allow_html=True)
     
     else:
-        st.info("Brak dostępnych wiadomości dla wybranego symbolu.")  
+        st.info("There is no relevant news for this topic")  
     
 except KeyError:
     st.error("KeyError: Symbol not found in Yahoo Finance.")
