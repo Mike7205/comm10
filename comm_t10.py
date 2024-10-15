@@ -306,7 +306,7 @@ def rand_forest(comm, forest):
     y_pred = model.predict(X_test)
     new_data = X[-200:]
     prediction = model.predict(new_data)
-    prediction[-forest:]
+    #prediction[-forest:]
 
     from pandas.tseries.offsets import BDay
     new_ranp = new_ranf[['Date', comm]][-200:]
