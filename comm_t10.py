@@ -256,7 +256,6 @@ def vol_chart(comm):
 vol_chart(comm)
 
 # Definicja modelu predykcyjnego Random Forest
-
 st.subheader(f'Random Forest Model predictions for -> {comm}', divider='blue')
 forest = st.slider('How long prices history you need?', 1, 1, 10, key = "<forest>") 
 
