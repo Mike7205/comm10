@@ -260,7 +260,7 @@ vol_chart(comm)
 
 # Definicja modelu predykcyjnego Random Forest
 st.subheader(f'Random Forest Model predictions for -> {comm}', divider='blue')
-forest = st.slider('Prediction for ?', 1, 1, 10, key = "<forest>") 
+forest = st.slider('Prediction for how many days ?', 1, 1, 10, key = "<forest>") 
 
 @st.cache_resource
 def model_forest(past):    
