@@ -292,7 +292,7 @@ def data_set_forest(comm):
     describing_vars = forest_df.drop(['Date',comm], axis=1)
     describing_rr = (describing_vars - describing_vars.shift(1)) / describing_vars.shift(1)  # ta linijka kodu liczy wszystkie stopy zwrotu
     forest_rr_df = pd.concat([forest_df['Date'],var_described, describing_rr], axis=1)
-    forest_rr_f = forest_rr_df.dropna()
+    forest_rr_f = forest_rr_df.fillna(0)
     forest_rr_f.to_pickle('forest_rr_f.pkl')
 
 def rand_forest(comm, forest):
