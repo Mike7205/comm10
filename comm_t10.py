@@ -255,6 +255,78 @@ def vol_chart(comm):
      
 vol_chart(comm)
 
+# Definicja modelu predykcyjnego Random Forest
+
+st.subheader(f'Random Forest Model predictions for -> {comm}', divider='blue')
+forest = st.slider('How long prices history you need?', 1, 1, 10, key = "<forest>") 
+
+@st.cache_resource
+def model_forest(1001):    
+    import warnings
+    warnings.filterwarnings("ignore")
+    m_tab = None  # Inicjalizacja zmiennej m_tab
+
+    for label, name in comm_dict.items():
+        col_name = {'Close': name}
+        y1 = pd.DataFrame(yf.download(label, start='2003-12-01', end=today))[-3001:]
+        y1.reset_index(inplace=True)
+        y11 = y1[['Date','Close']]
+        y11.rename(columns=col_name, inplace=True)
+        y2 = y1[['Close']]
+        y2 = pd.DataFrame(y2.reset_index(drop=True))
+        y2.rename(columns=col_name, inplace=True)
+        
+        if m_tab is None:
+            m_tab = y11  # Tworzenie tabeli w pierwszym przebiegu
+        else:
+            m_tab = pd.concat([m_tab, y2], axis=1)
+
+    m_tab.fillna(0)
+    m_tab.to_pickle('Forest_data.pkl')
+
+def data_set_forest(comm):
+    forest_df = pd.read_pickle('Forest_data.pkl')
+    var_described = forest_df[comm]
+    describing_vars = forest_df.drop(['Date',comm], axis=1)
+    describing_rr = (describing_vars - describing_vars.shift(1)) / describing_vars.shift(1)  # ta linijka kodu liczy wszystkie stopy zwrotu
+    forest_rr_df = pd.concat([forest_df['Date'],var_described, describing_rr], axis=1)
+    forest_rr_f = forest_rr_df.dropna()
+    forest_rr_f.to_pickle('forest_rr_f.pkl')
+
+def rand_forest(comm, forest):
+    new_ranf = pd.read_pickle('forest_rr_f.pkl')
+    X = new_ranf.drop(columns=['Date',comm])
+    y = new_ranf[comm]
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    model = RandomForestRegressor(n_estimators=100, random_state=42)
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    new_data = X[-200:]
+    prediction = model.predict(new_data)
+    prediction[-forest:]
+
+    from pandas.tseries.offsets import BDay
+    new_ranp = new_ranf[['Date', comm]][-200:]
+    forest_p = new_ranp.copy()
+    forest_p['Predicted Close'] = prediction[:200]
+    last_date = forest_p['Date'].iloc[-1]
+    future_dates = [last_date + BDay(i) for i in range(1, forest+1)]
+    future_data = pd.DataFrame({'Date': future_dates,comm: [np.nan] * len(future_dates),
+        'Predicted Close': prediction[-forest:]})
+    forest_p = pd.concat([forest_p, future_data], ignore_index=True)
+    fig_forest = px.line(forest_p, x='Date', y=[comm, 'Predicted Close'],color_discrete_map={
+                     comm:'blue','Predicted Close':'red'}, width=1000, height=500 ) 
+
+    fig_forest.update_layout(plot_bgcolor='white',showlegend=True,xaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'),
+                          yaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'))
+    st.plotly_chart(fig_forest, use_container_width=True)
+
+model_forest(1001)
+data_set_forest(comm)
+rand_forest(comm, forest)
+
+# Definicja tabelki z artykułami z Yahoo
 try:
     st.subheader(f'Yahoo news related to {comm}', divider='green')
     t_comm = next(key for key, value in comm_dict.items() if value == comm)
