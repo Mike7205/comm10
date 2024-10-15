@@ -260,14 +260,14 @@ st.subheader(f'Random Forest Model predictions for -> {comm}', divider='blue')
 forest = st.slider('How long prices history you need?', 1, 1, 10, key = "<forest>") 
 
 @st.cache_resource
-def model_forest(1001):    
+def model_forest(past):    
     import warnings
     warnings.filterwarnings("ignore")
     m_tab = None  # Inicjalizacja zmiennej m_tab
 
     for label, name in comm_dict.items():
         col_name = {'Close': name}
-        y1 = pd.DataFrame(yf.download(label, start='2003-12-01', end=today))[-3001:]
+        y1 = pd.DataFrame(yf.download(label, start='2003-12-01', end=today))[-past:]
         y1.reset_index(inplace=True)
         y11 = y1[['Date','Close']]
         y11.rename(columns=col_name, inplace=True)
