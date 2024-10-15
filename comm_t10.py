@@ -318,7 +318,7 @@ def rand_forest(comm, forest):
         'Predicted Close': prediction[-forest:]})
     forest_p = pd.concat([forest_p, future_data], ignore_index=True)
     fig_forest = px.line(forest_p, x='Date', y=[comm, 'Predicted Close'],color_discrete_map={
-                     comm:'green','Predicted Close':'red'}, width=1000, height=500, line_dash_map={'Predicted Close': 'dash', comm: 'solid'} ) 
+                     comm:'green','Predicted Close':'red'}, width=1000, height=500) 
     fig_forest.update_layout(plot_bgcolor='white',showlegend=True,xaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'),
                           yaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'))
     st.plotly_chart(fig_forest, use_container_width=True)
