@@ -328,7 +328,7 @@ def rand_forest(comm, forest):
     future_data = pd.DataFrame({'Date': future_dates,comm: [np.nan] * len(future_dates),
         'Predicted Close': prediction[-forest:]})
     forest_p = pd.concat([forest_p, future_data], ignore_index=True)
-    forest_p['Predicted Close Mean']= forest_p['Predicted Close'].rolling(window=10).mean()
+    forest_p['Predicted Close Mean']= forest_p['Predicted Close'].rolling(window = forest).mean()
     fig_forest = px.line(forest_p, x='Date', y=[comm, 'Predicted Close Mean'],color_discrete_map={
                      comm:'green','Predicted Close Mean':'black'}, width=1000, height=500)             #'Predicted Close', ,'Predicted Close':'red'
     fig_forest.update_layout(plot_bgcolor='white',showlegend=True,xaxis=dict(showgrid=True, gridwidth=0.5, gridcolor='Lightgrey'),
