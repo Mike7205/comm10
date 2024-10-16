@@ -286,8 +286,19 @@ def model_forest(past):
     m_tab.fillna(0)
     m_tab.to_pickle('Forest_data.pkl')
 
+def forest_cut_variables(comm):
+    forest_cor = pd.read_pickle('Forest_data.pkl')
+    forest_cut = forest_cor.drop(['Date'], axis=1)
+    correlations = forest_cut.corr()
+    comm_correlations = correlations[comm]
+    filtered_columns = comm_correlations[(comm_correlations >= 0.05) & (comm_correlations <= 0.55)].index
+    filtered_forest_cor = forest_cut[[comm] + list(filtered_columns)]
+    fil_forest_cor = pd.concat([forest_cor['Date'],filtered_forest_cor], axis=1)
+    fil_forest_cor = fil_forest_cor.fillna(0)
+    fil_forest_cor.to_pickle('fil_forest_cor.pkl')
+
 def data_set_forest(comm):
-    forest_df = pd.read_pickle('Forest_data.pkl')
+    forest_df = pd.read_pickle('fil_forest_cor.pkl')
     var_described = forest_df[comm]
     describing_vars = forest_df.drop(['Date',comm], axis=1)
     describing_rr = (describing_vars - describing_vars.shift(1)) / describing_vars.shift(1)  # ta linijka kodu liczy wszystkie stopy zwrotu
@@ -325,6 +336,7 @@ def rand_forest(comm, forest):
     st.plotly_chart(fig_forest, use_container_width=True)
 
 model_forest(1001)
+forest_cut_variables(comm)
 data_set_forest(comm)
 rand_forest(comm, forest)
 
