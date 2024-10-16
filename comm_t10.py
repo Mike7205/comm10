@@ -291,7 +291,7 @@ def forest_cut_variables(comm):
     forest_cut = forest_cor.drop(['Date'], axis=1)
     correlations = forest_cut.corr()
     comm_correlations = correlations[comm]
-    filtered_columns = comm_correlations[(comm_correlations >= 0.05) & (comm_correlations <= 0.55)].index
+    filtered_columns = comm_correlations[(comm_correlations >= 0.05) & (comm_correlations <= 0.65)].index
     filtered_forest_cor = forest_cut[[comm] + list(filtered_columns)]
     fil_forest_cor = pd.concat([forest_cor['Date'],filtered_forest_cor], axis=1)
     fil_forest_cor = fil_forest_cor.fillna(0)
