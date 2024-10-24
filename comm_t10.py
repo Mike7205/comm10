@@ -341,32 +341,32 @@ data_set_forest(comm)
 rand_forest(comm, forest)
 
 # Definicja tabelki z artykułami z Yahoo
-try:
-    st.subheader(f'Yahoo news related to {comm}', divider='green')
-    t_comm = next(key for key, value in comm_dict.items() if value == comm)
-    data = yf.Ticker(t_comm)
-    news = data.news
+#try:
+#    st.subheader(f'Yahoo news related to {comm}', divider='green')
+#    t_comm = next(key for key, value in comm_dict.items() if value == comm)
+#    data = yf.Ticker(t_comm)
+#    news = data.news
     
-    if news:
-        news_data = [{"Title": item['title'], 
-                      "Link": f"<a href='{item['link']}' target='_blank'>{item['link']}</a>",
-                      "Publisher": item['publisher']} for item in news]
+#    if news:
+#        news_data = [{"Title": item['title'], 
+#                      "Link": f"<a href='{item['link']}' target='_blank'>{item['link']}</a>",
+#                      "Publisher": item['publisher']} for item in news]
 
-        table = "<table><tr><th>Title</th><th>Link</th><th>Publisher</th></tr>"
-        for item in news_data:
-            row = f"<tr><td>{item['Title']}</td><td>{item['Link']}</td><td>{item['Publisher']}</td></tr>"
-            table += row
-        table += "</table>"
+#        table = "<table><tr><th>Title</th><th>Link</th><th>Publisher</th></tr>"
+#        for item in news_data:
+#            row = f"<tr><td>{item['Title']}</td><td>{item['Link']}</td><td>{item['Publisher']}</td></tr>"
+#            table += row
+#        table += "</table>"
 
-        st.markdown(table, unsafe_allow_html=True)
+#        st.markdown(table, unsafe_allow_html=True)
     
-    else:
-        st.info("There is no relevant news for this topic")  
+#    else:
+#        st.info("There is no relevant news for this topic")  
     
-except KeyError:
-    st.error("KeyError: Symbol not found in Yahoo Finance.")
-except Exception as e:
-    st.error(f"An unexpected error occurred: {e}")
+#except KeyError:
+#    st.error("KeyError: Symbol not found in Yahoo Finance.")
+#except Exception as e:
+#    st.error(f"An unexpected error occurred: {e}")
     
 st.subheader('Prediction models and benchmarks', divider='blue')
 def D5_tabel_date(): # Konwersja kolumny 'Date' na typ daty
