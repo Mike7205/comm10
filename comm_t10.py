@@ -72,7 +72,7 @@ def comm_data(comm):
 st.html(
     """
 <style>
-[data-testid="stSidebarContent"] {color: black; background-color: #4B68B8} 
+[data-testid="stSidebarContent"] {color: black; background-color: #008AD8} 
 </style>
 """)
 st.sidebar.subheader('Indexies, Currencies, Bonds, Commodities & Crypto', divider="grey")
