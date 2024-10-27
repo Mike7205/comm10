@@ -31,7 +31,7 @@ st.subheader('& own LSTM prediction models', divider='blue')
 today = date.today()
 comm_dict = {'^GSPC':'SP_500','^DJI':'DJI30','^IXIC':'NASDAQ','000001.SS':'SSE Composite Index','^HSI':'HANG SENG INDEX','^VIX':'CBOE Volatility Index','^RUT':'Russell 2000',
              '^BVSP':'IBOVESPA','^FTSE':'FTSE 100','^GDAXI':'DAX PERFORMANCE-INDEX', '^N100':'Euronext 100 Index','^N225':'Nikkei 225',
-             'EURUSD=X':'EUR_USD','EURCHF=X':'EUR_CHF','CNY=X':'USD/CNY', 'GBPUSD=X':'USD_GBP','JPY=X':'USD_JPY','EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD', 'GBPPLN=X':'PLN/GBP', 
+             'EURUSD=X':'EUR_USD','EURCHF=X':'EUR_CHF','CNY=X':'USD/CNY', 'GBPUSD=X':'USD_GBP','JPY=X':'USD_JPY','EURPLN=X':'EUR/PLN','PLN=X':'PLN/USD','GBPPLN=X':'PLN/GBP', 
              'RUB=X':'USD/RUB','DX-Y.NYB':'US Dollar Index','^XDE':'Euro Currency Index', '^XDN':'Japanese Yen Currency Index',
              '^XDA':'Australian Dollar Currency Index','^XDB':'British Pound Currency Index','^FVX':'5_YB','^TNX':'10_YB','^TYX':'30_YB', 
              'CL=F':'Crude_Oil','BZ=F':'Brent_Oil', 'GC=F':'Gold','HG=F':'Copper', 'PL=F':'Platinum','SI=F':'Silver','NG=F':'Natural Gas',
