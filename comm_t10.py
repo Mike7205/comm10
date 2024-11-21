@@ -402,7 +402,7 @@ if checkbox_value2:
     D5_tabel_date()
     st.subheader('EUR/PLN exchange rate (D+5) predictions')
     val_D5E = pd.read_pickle('D5_eur_tabel.pkl')
-    val_D5EP = val_D5E[['Date','Day + 5 Prediction']]#[-100:]
+    val_D5EP = val_D5E[['Date','Day + 5 Prediction']][-100:]
     val_D5EU = pd.read_pickle('D5_eur_tabel.pkl')
     val_D5EUR = val_D5EU[['Date','EUR/PLN']][-100:]
     day_es = val_D5EUR.shape[0]
