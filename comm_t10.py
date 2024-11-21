@@ -442,7 +442,7 @@ with col12:
 if checkbox_value5:
     st.subheader('USD/PLN exchange rate (D+1) predictions')
     val_s = pd.read_pickle('D1_USD_a.pkl')
-    val_s1 = val_s[['Date','USD/PLN','Day + 1 Prediction']][-100:]      #.iloc[:-1]
+    val_s1 = val_s[['Date','USD/PLN','Day + 1 Prediction']] #[-100:]      #.iloc[:-1]
     day_s1 = val_s1.shape[0]
 
     st.subheader(f'Predictions for the last {day_s1} days', divider='grey')
