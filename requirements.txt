@@ -8,4 +8,4 @@ pandas
 scipy
 scikit-learn
 statsmodels
-tensorflow
+tensorflow==2.18.0
