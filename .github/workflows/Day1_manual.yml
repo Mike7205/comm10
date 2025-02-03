@@ -32,10 +32,6 @@ jobs:
         pip install -r requirements.txt  # Zakładając, że masz plik requirements.txt
         pip install git+https://github.com/statsmodels/statsmodels.git
 
-    - name: Debug: List installed packages
-      run: |
-        pip freeze
-
     - name: Run D1_LSTM.py
       run: python D1_LSTM.py
 
