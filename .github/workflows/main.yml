@@ -20,12 +20,21 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install -y build-essential
+
+    - name: Clear existing dependencies
+      run: |
+        pip freeze > requirements_to_remove.txt
+        pip uninstall -r requirements_to_remove.txt -y
     
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt  # Zakładając, że masz plik requirements.txt
         pip install git+https://github.com/statsmodels/statsmodels.git
+
+    - name: Debug: List installed packages
+      run: |
+        pip freeze
 
     - name: Run D1_LSTM.py
       run: python D1_LSTM.py
@@ -68,5 +77,5 @@ jobs:
         git add D1_EUR_a.pkl D1_USD_a.pkl D5_eur_tabel.pkl
         git commit -m 'Move D1_EUR_a.pkl and D1_USD_a.pkl and D5_eur_tabel.pkl from artifacts to root directory'
         git push origin master  
-    env:
-        GITHUB_TOKEN: ${{ secrets.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 }}   
+      env:
+        GITHUB_TOKEN: ${{ secrets.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 }}
