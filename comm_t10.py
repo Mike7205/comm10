@@ -82,44 +82,44 @@ st.sidebar.write('© Michał Leśniewski')
 st.sidebar.image('Footer3.gif', use_container_width=True)
 
 # tu wstawimy wykresy 15 minutowe
-def t1_f(char1):
-    global tf_c1
-    for label, name in comm_dict.items():
-        if name == char1:
-            box = yf.Ticker(label)
-            tf_c = pd.DataFrame(box.history(period='1d', interval="1m"))
-            tf_c1 = tf_c[-300:]
-    return tf_c1 
+#def t1_f(char1):
+#    global tf_c1
+#    for label, name in comm_dict.items():
+#        if name == char1:
+#            box = yf.Ticker(label)
+#            tf_c = pd.DataFrame(box.history(period='1d', interval="1m"))
+#            tf_c1 = tf_c[-300:]
+#    return tf_c1 
 
-def t2_f(char2):
-    global tf_c2
-    for label, name in comm_dict.items():
-        if name == char2:        
-            box = yf.Ticker(label)
-            tf_c = pd.DataFrame(box.history(period='1d', interval="1m"))
-            tf_c2 = tf_c[-300:]
-    return tf_c2 
+#def t2_f(char2):
+#    global tf_c2
+#    for label, name in comm_dict.items():
+#        if name == char2:        
+#            box = yf.Ticker(label)
+#            tf_c = pd.DataFrame(box.history(period='1d', interval="1m"))
+#            tf_c2 = tf_c[-300:]
+#    return tf_c2 
 
-col1, col2 = st.columns([0.5, 0.5])
-with col1:
-    box = list(comm_dict.values())
-    char1 = st.selectbox('Last 4 hours trading dynamics', box, index= box.index('Brent_Oil'),key = "<char1>")
-    t1_f(char1)
-    data_x1 = tf_c1.index
-    fig_char1 = px.line(tf_c1, x=data_x1, y=['Open','High','Low','Close'],color_discrete_map={
-                 'Open':'yellow','High':'red','Low':'blue','Close':'green'}, width=750, height=400) 
-    fig_char1.update_layout(showlegend=False)
-    fig_char1.update_layout(xaxis=None, yaxis=None)
-    st.plotly_chart(fig_char1) #use_container_width=True
-with col2:
-    char2 = st.selectbox('Last 4 hours trading dynamics', box, index=box.index('PLN/USD'),key = "<char2>")
-    t2_f(char2)
-    data_x2 = tf_c2.index
-    fig_char2 = px.line(tf_c2, x=data_x2, y=['Open','High','Low','Close'],color_discrete_map={
-                 'Open':'yellow','High':'red','Low':'blue','Close':'green'}, width=750, height=400) 
-    fig_char2.update_layout(showlegend=True)
-    fig_char2.update_layout(xaxis=None, yaxis=None)
-    st.plotly_chart(fig_char2)
+#col1, col2 = st.columns([0.5, 0.5])
+#with col1:
+#    box = list(comm_dict.values())
+#    char1 = st.selectbox('Last 4 hours trading dynamics', box, index= box.index('Brent_Oil'),key = "<char1>")
+#    t1_f(char1)
+#    data_x1 = tf_c1.index
+#    fig_char1 = px.line(tf_c1, x=data_x1, y=['Open','High','Low','Close'],color_discrete_map={
+#                 'Open':'yellow','High':'red','Low':'blue','Close':'green'}, width=750, height=400) 
+#    fig_char1.update_layout(showlegend=False)
+#    fig_char1.update_layout(xaxis=None, yaxis=None)
+#    st.plotly_chart(fig_char1) #use_container_width=True
+#with col2:
+#    char2 = st.selectbox('Last 4 hours trading dynamics', box, index=box.index('PLN/USD'),key = "<char2>")
+#    t2_f(char2)
+#    data_x2 = tf_c2.index
+#    fig_char2 = px.line(tf_c2, x=data_x2, y=['Open','High','Low','Close'],color_discrete_map={
+#                 'Open':'yellow','High':'red','Low':'blue','Close':'green'}, width=750, height=400) 
+#    fig_char2.update_layout(showlegend=True)
+#    fig_char2.update_layout(xaxis=None, yaxis=None)
+#    st.plotly_chart(fig_char2)
 
 # Definicja wykresu średnich ruchomych 
 st.subheader(f'Short and long rolling averages signals for -> {comm}', divider='blue')
