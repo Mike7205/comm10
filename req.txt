@@ -1,0 +1,10 @@
+streamlit==1.42.1
+plotly==5.15.0
+yfinance==0.2.28
+openpyxl==3.1.5
+numpy<2
+pandas
+scipy
+scikit-learn
+statsmodels
+tensorflow==2.14
