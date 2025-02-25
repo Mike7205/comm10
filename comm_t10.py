@@ -10,7 +10,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 from pathlib import Path
-import appdirs as ad
+# import appdirs as ad
 import yfinance as yf
 from sklearn.linear_model import LinearRegression
 from streamlit import set_page_config
