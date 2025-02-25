@@ -54,7 +54,7 @@ def comm_data(comm):
     sh = df_c1.shape[0]
     start_date = df_c1.Date.min()
     end_date = df_c1.Date.max()
-    df_c1['Close'] = df_c1['Close'].fillna(0)
+    df_c1['Close'] = pd.to_numeric(df_c1['Close'], errors='coerce')
     close_max = "{:.2f}".format(df_c1['Close'].max())
     close_min = "{:.2f}".format(df_c1['Close'].min())
     last_close = "{:.2f}".format(df_c1['Close'].iloc[-1])
