@@ -16,25 +16,26 @@ jobs:
       with:
         python-version: '3.11'  # Wybierz odpowiednią wersję Pythona
 
+    - name: Install NVIDIA CUDA keyring and dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y wget
+        wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.0-1_all.deb
+        sudo dpkg -i cuda-keyring_1.0-1_all.deb
+        sudo apt-get update
+        sudo apt-get install -y cuda
+
     - name: Install build tools
       run: |
         sudo apt-get update
         sudo apt-get install -y build-essential
 
-    - name: Clear existing dependencies
-      run: |
-        pip freeze > requirements_to_remove.txt
-        pip uninstall -r requirements_to_remove.txt -y
-
-    - name: Install dependencies
+    - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
+        pip install tensorflow tensorflow-gpu
         pip install -r requirements.txt  # Zakładając, że masz plik requirements.txt
         pip install git+https://github.com/statsmodels/statsmodels.git
-
-    - name: Debug: List installed packages
-      run: |
-        pip freeze
 
     - name: Run D1_LSTM.py
       run: python D1_LSTM.py
@@ -55,7 +56,7 @@ jobs:
     - name: Pull latest changes
       run: git pull origin master
       env:
-        GITHUB_TOKEN: ${{ secrets.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 }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Commit and push results
       run: |
@@ -65,7 +66,7 @@ jobs:
         git commit -m 'Add results from D1_LSTM.py'
         git push
       env:
-        GITHUB_TOKEN: ${{ secrets.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 }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Move files
       run: |
@@ -78,4 +79,4 @@ jobs:
         git commit -m 'Move D1_EUR_a.pkl and D1_USD_a.pkl and D5_eur_tabel.pkl from artifacts to root directory'
         git push origin master
       env:
-        GITHUB_TOKEN: ${{ secrets.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 }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
