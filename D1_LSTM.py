@@ -30,7 +30,8 @@ def model_f(past):
         y1 = pd.DataFrame(yf.download(label, start='2003-12-01', end=today))[-past:]
         y1.reset_index(inplace=True)
         y11 = y1[['Date','Close']]
-        y11.rename(columns=col_name, inplace=True)
+        #y11.rename(columns=col_name, inplace=True)
+        y11 = y11.rename(columns=col_name)
         y2 = y1[['Close']]
         y2 = pd.DataFrame(y2.reset_index(drop=True))
         y2.rename(columns=col_name, inplace=True)
