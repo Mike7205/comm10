@@ -27,7 +27,9 @@ def model_f(past):
     m_tab = None  # Inicjalizacja zmiennej m_tab
     for label, name in comm_dict2.items():
         col_name = {'Close': name}
-        y1 = pd.DataFrame(yf.download(label, start='2003-12-01', end=today))[-past:]
+        #y1 = pd.DataFrame(yf.download(label, start='2003-12-01', end=today))[-past:]
+        y1 = yf.download(label, start='2003-12-01', end=today, auto_adjust=False)
+        y1 = pd.DataFrame(y1)[-past:] 
         y1.reset_index(inplace=True)
         y11 = y1[['Date','Close']]
         #y11.rename(columns=col_name, inplace=True)
