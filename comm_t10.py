@@ -50,21 +50,20 @@ def comm_f(comm):
 # Dane historyczne                    
 def comm_data(comm):
     global Tab_his
-    global Tab_his
     shape_test = []
     sh = df_c1.shape[0]
     start_date = df_c1.Date.min()
     end_date = df_c1.Date.max()
 
-    # Pobranie maksymalnej, minimalnej i ostatniej wartości
+    # Pobranie maksymalnej, minimalnej i ostatniej wartości jako liczby
     max_close_value = df_c1['Close'].max()
     min_close_value = df_c1['Close'].min()
     last_close_value = df_c1['Close'].iloc[-1]
 
-    # Formatowanie wartości do dwóch miejsc po przecinku
-    close_max = "{:.2f}".format(float(max_close_value)) if not pd.isnull(max_close_value) else "NaN"
-    close_min = "{:.2f}".format(float(min_close_value)) if not pd.isnull(min_close_value) else "NaN"
-    last_close = "{:.2f}".format(float(last_close_value)) if not pd.isnull(last_close_value) else "NaN"
+    # Sprawdzenie braków danych i formatowanie wartości
+    close_max = "{:.2f}".format(float(max_close_value)) if pd.notna(max_close_value) else "NaN"
+    close_min = "{:.2f}".format(float(min_close_value)) if pd.notna(min_close_value) else "NaN"
+    last_close = "{:.2f}".format(float(last_close_value)) if pd.notna(last_close_value) else "NaN"
 
     # Dodanie danych do tabeli
     v = (comm, sh, start_date, end_date, close_max, close_min, last_close)
