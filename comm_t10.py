@@ -147,8 +147,8 @@ with col5:
 def roll_avr(nums,numl):
     global df_c_XDays
     # Oblicz krótkoterminową i długoterminową średnią kroczącą
-    df_c1['Short_SMA']= df_c1['Close'].rolling(window=10).mean()
-    df_c1['Long_SMA']= df_c1['Close'].rolling(window=30).mean()
+    df_c1['Short_SMA']= df_c1['Close'].rolling(window=nums).mean()
+    df_c1['Long_SMA']= df_c1['Close'].rolling(window=numl).mean()
     df_c1['Buy_Signal'] = (df_c1['Short_SMA'] > df_c1['Long_SMA']).astype(int).diff()
     df_c1['Sell_Signal'] = (df_c1['Short_SMA'] < df_c1['Long_SMA']).astype(int).diff()
     df_c_XDays = df_c1.iloc[xy - oil_p:xy]
