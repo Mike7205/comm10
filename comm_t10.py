@@ -147,28 +147,41 @@ with col5:
 def roll_avr(nums,numl):
     global df_c_XDays
     # Oblicz krótkoterminową i długoterminową średnią kroczącą
-    df_c1['Short_SMA']= df_c1['Close'].rolling(window=nums).mean()
-    df_c1['Long_SMA']= df_c1['Close'].rolling(window=numl).mean()
-    
-    # Generuj sygnały kupna i sprzedaży
+    df_c1['Short_SMA']= df_c1['Close'].rolling(window=10).mean()
+    df_c1['Long_SMA']= df_c1['Close'].rolling(window=30).mean()
     df_c1['Buy_Signal'] = (df_c1['Short_SMA'] > df_c1['Long_SMA']).astype(int).diff()
     df_c1['Sell_Signal'] = (df_c1['Short_SMA'] < df_c1['Long_SMA']).astype(int).diff()
-     
     df_c_XDays = df_c1.iloc[xy - oil_p:xy]
-      
-    fig1 = px.line(df_c_XDays, x='Date', y=['Close','Short_SMA','Long_SMA'], color_discrete_map={'Close':'#d62728',
-                  'Short_SMA': '#F39F18','Long_SMA':'#0d0887'}, width=1000, height=500)
-    fig1.add_trace(go.Scatter(x=df_c_XDays[df_c_XDays['Buy_Signal'] == 1].Date, y=df_c_XDays[df_c_XDays['Buy_Signal'] == 1]['Short_SMA'], name='Buy_Signal', mode='markers', 
-                             marker=dict(color='green', size=15, symbol='triangle-up')))
-    fig1.add_trace(go.Scatter(x=df_c_XDays[df_c_XDays['Sell_Signal'] == 1].Date, y=df_c_XDays[df_c_XDays['Sell_Signal'] == 1]['Short_SMA'], name='Sell_Signal',
-                              mode='markers', marker=dict(color='red', size=15, symbol='triangle-down')))
-    buy_signals = df_c_XDays[df_c_XDays['Buy_Signal'] == 1]
-    #for i in buy_signals.index:
-    #    fig1.add_hline(y=buy_signals.loc[i, 'Short_SMA'], line_width=0.5, line_dash="dash", line_color="black")
-
-    sell_signals = df_c_XDays[df_c_XDays['Sell_Signal'] == 1]
-    #for i in sell_signals.index:
-    #    fig1.add_hline(y=sell_signals.loc[i, 'Short_SMA'], line_width=0.5, line_dash="dash", line_color="black")
+    df_c_XDays.columns = ['_'.join(filter(None, col)).strip() for col in df_c_XDays.columns]
+    
+    fig1 = px.line(
+        df_c_XDays,
+        x='Date',
+        y=['Close_BZ=F', 'Short_SMA', 'Long_SMA'],
+        color_discrete_map={
+            'Close_BZ=F': '#d62728',
+            'Short_SMA': '#F39F18',
+            'Long_SMA': '#0d0887'
+        },
+        width=1000,
+        height=500
+    )
+    
+    fig1.add_trace(go.Scatter(
+        x=df_c_XDays[df_c_XDays['Buy_Signal'] == 1]['Date'],
+        y=df_c_XDays[df_c_XDays['Buy_Signal'] == 1]['Short_SMA'],
+        name='Buy_Signal',
+        mode='markers',
+        marker=dict(color='green', size=15, symbol='triangle-up')
+    ))
+    
+    fig1.add_trace(go.Scatter(
+        x=df_c_XDays[df_c_XDays['Sell_Signal'] == 1]['Date'],
+        y=df_c_XDays[df_c_XDays['Sell_Signal'] == 1]['Short_SMA'],
+        name='Sell_Signal',
+        mode='markers',
+        marker=dict(color='red', size=15, symbol='triangle-down')
+    ))
     
     fig1.update_layout(xaxis=None, yaxis=None)
     st.plotly_chart(fig1, use_container_width=True)
