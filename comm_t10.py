@@ -50,20 +50,21 @@ def comm_f(comm):
 # Dane historyczne                    
 def comm_data(comm):
     global Tab_his
+    global Tab_his
     shape_test = []
     sh = df_c1.shape[0]
     start_date = df_c1.Date.min()
     end_date = df_c1.Date.max()
 
-    # Pobranie wartości liczbowych dla max, min i ostatniego zamknięcia
+    # Pobranie maksymalnej, minimalnej i ostatniej wartości
     max_close_value = df_c1['Close'].max()
     min_close_value = df_c1['Close'].min()
     last_close_value = df_c1['Close'].iloc[-1]
 
-    # Formatowanie wartości do 2 miejsc po przecinku
-    close_max = "{:.2f}".format(max_close_value) if not pd.isnull(max_close_value) else "NaN"
-    close_min = "{:.2f}".format(min_close_value) if not pd.isnull(min_close_value) else "NaN"
-    last_close = "{:.2f}".format(last_close_value) if not pd.isnull(last_close_value) else "NaN"
+    # Formatowanie wartości do dwóch miejsc po przecinku
+    close_max = "{:.2f}".format(float(max_close_value)) if not pd.isnull(max_close_value) else "NaN"
+    close_min = "{:.2f}".format(float(min_close_value)) if not pd.isnull(min_close_value) else "NaN"
+    last_close = "{:.2f}".format(float(last_close_value)) if not pd.isnull(last_close_value) else "NaN"
 
     # Dodanie danych do tabeli
     v = (comm, sh, start_date, end_date, close_max, close_min, last_close)
@@ -72,6 +73,8 @@ def comm_data(comm):
     Tab_his = Tab_length[['Start_Date', 'End_Date', 'Close_max', 'Close_min', 'Last_close']]
     Tab_his['Start_Date'] = pd.to_datetime(Tab_his['Start_Date']).dt.strftime('%Y-%m-%d')
     Tab_his['End_Date'] = pd.to_datetime(Tab_his['End_Date']).dt.strftime('%Y-%m-%d')
+
+    return Tab_his
         
     return Tab_his
 
