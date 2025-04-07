@@ -55,9 +55,13 @@ def comm_data(comm):
     start_date = df_c1.Date.min()
     end_date = df_c1.Date.max()
     
-    close_max = "{:.2f}".format(df_c1['Close'].max().values[0])
-    close_min = "{:.2f}".format(df_c1['Close'].min().values[0])
-    last_close = "{:.2f}".format(df_c1['Close'].iloc[-1].values[0])
+    #close_max = "{:.2f}".format(df_c1['Close'].max().values[0])
+    #close_min = "{:.2f}".format(df_c1['Close'].min().values[0])
+    #last_close = "{:.2f}".format(df_c1['Close'].iloc[-1].values[0])
+    close_max = "{:.2f}".format(df_c1['Close'].max()) if pd.notna(df_c1['Close'].max()) else "NaN"
+    close_min = "{:.2f}".format(df_c1['Close'].min()) if pd.notna(df_c1['Close'].min()) else "NaN"
+    last_close = "{:.2f}".format(df_c1['Close'].iloc[-1]) if pd.notna(df_c1['Close'].iloc[-1]) else "NaN"
+  
     v = (comm, sh, start_date,end_date,close_max,close_min,last_close)
     shape_test.append(v)
     Tab_length = pd.DataFrame(shape_test, columns= ['Name','Rows', 'Start_Date', 'End_Date','Close_max','Close_min','Last_close'])   
