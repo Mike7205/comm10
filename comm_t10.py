@@ -50,26 +50,28 @@ def comm_f(comm):
 # Dane historyczne                    
 def comm_data(comm):
     global Tab_his
-    shape_test=[]
+    shape_test = []
     sh = df_c1.shape[0]
     start_date = df_c1.Date.min()
     end_date = df_c1.Date.max()
-    
-    #close_max = "{:.2f}".format(df_c1['Close'].max().values[0])
-    #close_min = "{:.2f}".format(df_c1['Close'].min().values[0])
-    #last_close = "{:.2f}".format(df_c1['Close'].iloc[-1].values[0])
-    close_max = "{:.2f}".format(df_c1['Close'].max()) if pd.notna(df_c1['Close'].max()) else "NaN"
-    close_min = "{:.2f}".format(df_c1['Close'].min()) if pd.notna(df_c1['Close'].min()) else "NaN"
-    last_close = "{:.2f}".format(df_c1['Close'].iloc[-1]) if pd.notna(df_c1['Close'].iloc[-1]) else "NaN"
-  
-    v = (comm, sh, start_date,end_date,close_max,close_min,last_close)
+
+    # Pobranie wartości liczbowych dla max, min i ostatniego zamknięcia
+    max_close_value = df_c1['Close'].max()
+    min_close_value = df_c1['Close'].min()
+    last_close_value = df_c1['Close'].iloc[-1]
+
+    # Formatowanie wartości do 2 miejsc po przecinku
+    close_max = "{:.2f}".format(max_close_value) if not pd.isnull(max_close_value) else "NaN"
+    close_min = "{:.2f}".format(min_close_value) if not pd.isnull(min_close_value) else "NaN"
+    last_close = "{:.2f}".format(last_close_value) if not pd.isnull(last_close_value) else "NaN"
+
+    # Dodanie danych do tabeli
+    v = (comm, sh, start_date, end_date, close_max, close_min, last_close)
     shape_test.append(v)
-    Tab_length = pd.DataFrame(shape_test, columns= ['Name','Rows', 'Start_Date', 'End_Date','Close_max','Close_min','Last_close'])   
-    Tab_his = Tab_length[['Start_Date','End_Date','Close_max','Close_min','Last_close']]
-    Tab_his['Start_Date'] = Tab_his['Start_Date'].dt.strftime('%Y-%m-%d')
-    Tab_his['End_Date'] = Tab_his['End_Date'].dt.strftime('%Y-%m-%d')
-    #Tab_his1 = Tab_his.T
-    #Tab_his1.rename(columns={0: "Details"}, inplace=True)
+    Tab_length = pd.DataFrame(shape_test, columns=['Name', 'Rows', 'Start_Date', 'End_Date', 'Close_max', 'Close_min', 'Last_close'])
+    Tab_his = Tab_length[['Start_Date', 'End_Date', 'Close_max', 'Close_min', 'Last_close']]
+    Tab_his['Start_Date'] = pd.to_datetime(Tab_his['Start_Date']).dt.strftime('%Y-%m-%d')
+    Tab_his['End_Date'] = pd.to_datetime(Tab_his['End_Date']).dt.strftime('%Y-%m-%d')
         
     return Tab_his
 
