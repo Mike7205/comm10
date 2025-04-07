@@ -54,11 +54,10 @@ def comm_data(comm):
     sh = df_c1.shape[0]
     start_date = df_c1.Date.min()
     end_date = df_c1.Date.max()
-    #df_c1['Close'] = pd.to_numeric(df_c1['Close'], errors='coerce')
-    df_c1['Close'] = df_c1['Close'].fillna(0) 
-    close_max = "{:.2f}".format(df_c1['Close'].max())
-    close_min = "{:.2f}".format(df_c1['Close'].min())
-    last_close = "{:.2f}".format(df_c1['Close'].iloc[-1])
+    
+    close_max = "{:.2f}".format(df_c1['Close'].max().values[0])
+    close_min = "{:.2f}".format(df_c1['Close'].min().values[0])
+    last_close = "{:.2f}".format(df_c1['Close'].iloc[-1].values[0])
     v = (comm, sh, start_date,end_date,close_max,close_min,last_close)
     shape_test.append(v)
     Tab_length = pd.DataFrame(shape_test, columns= ['Name','Rows', 'Start_Date', 'End_Date','Close_max','Close_min','Last_close'])   
