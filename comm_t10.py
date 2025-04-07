@@ -153,6 +153,7 @@ def roll_avr(nums,numl):
     df_c1['Sell_Signal'] = (df_c1['Short_SMA'] < df_c1['Long_SMA']).astype(int).diff()
     df_c_XDays = df_c1.iloc[xy - oil_p:xy]
     df_c_XDays.columns = ['_'.join(filter(None, col)).strip() for col in df_c_XDays.columns]
+    df_c_XDays['Date'] = pd.to_datetime(df_c_XDays['Date'], errors='coerce')
     
     fig1 = px.line(
         df_c_XDays,
